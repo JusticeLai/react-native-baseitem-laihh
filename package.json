@@ -1,0 +1,14 @@
+{
+  "name": "react-native-baseitem-laihh",
+  "version": "1.0.4",
+  "description": "laihuihuang",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native-baseitem-laihh"
+  ],
+  "author": "laihuihuang",
+  "license": "MIT"
+}
