@@ -13,7 +13,8 @@ import {
 } from 'react-native';
 
 import CommonStyle from './style/CommonStyle';
-let {width, height} = Dimensions.get('window');;
+let {width, height} = Dimensions.get('window');
+;
 
 export default class SCBaseItemView extends Component {
 
@@ -46,6 +47,10 @@ export default class SCBaseItemView extends Component {
                     {this.renderType3()}
                 </View>
             )
+        } else if (type == 4) {
+            return this.renderType4()
+        }else if (type == 5) {
+            return this.renderType5()
         }
     }
 
@@ -85,7 +90,6 @@ export default class SCBaseItemView extends Component {
     }
 
 
-
     renderType2() {
         let data = this.props.data ? this.props.data : {};
 
@@ -117,9 +121,15 @@ export default class SCBaseItemView extends Component {
         //     </TouchableOpacity>
         // )
 
-        return(
+        return (
             <TouchableOpacity
-                style={{paddingHorizontal: 15, paddingVertical: paddingVertical, backgroundColor: 'white', flex: 1,flexDirection:'row'}}
+                style={{
+                    paddingHorizontal: 15,
+                    paddingVertical: paddingVertical,
+                    backgroundColor: 'white',
+                    flex: 1,
+                    flexDirection: 'row'
+                }}
                 activeOpacity={CommonStyle.activeOpacity} onPress={onPress}>
                 <View style={{alignItems: 'flex-start', flex: 1}}>
                     <Text style={{color: text1Color, fontSize: text1fontSize}}>{text1}</Text>
@@ -191,6 +201,120 @@ export default class SCBaseItemView extends Component {
             </TouchableOpacity>
         )
     }
+
+
+    renderType4() {
+        let data = this.props.data ? this.props.data : {};
+
+        let paddingVertical = data && data.paddingVertical ? data.paddingVertical : 15;
+
+        let text1 = data && data.text1 ? data.text1 : '';
+        let text1Color = data && data.text1Color ? data.text1Color : CommonStyle.TEXT_COLOR;
+        let text1fontSize = data && data.text1fontSize ? data.text1fontSize : 14;
+        let text2 = data && data.text2 ? data.text2 : '';
+        let text2Color = data && data.text2Color ? data.text2Color : CommonStyle.TEXT_COLOR;
+        let text2fontSize = data && data.text2fontSize ? data.text2fontSize : 14;
+        let text3 = data && data.text3 ? data.text3 : '';
+        let text3Color = data && data.text3Color ? data.text3Color : CommonStyle.TEXT_COLOR;
+        let text3fontSize = data && data.text3fontSize ? data.text3fontSize : 14;
+        let onPress = this.props.onPress ? this.props.onPress : ()=> {
+        };
+
+
+        let image = data && data.image ? data.image : '';
+
+        return (
+            <TouchableOpacity onPress={onPress} style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: 'row',
+                height: 100
+            }}>
+                <View style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: 90,
+                    height: 100,
+                }}>
+                    <Image style={{width: 80, height: 80, margin: 5}} source={{uri: image}}/>
+                </View>
+                <View style={{
+                    flex: 1,
+                    height: 100,
+                    flexDirection: 'column',
+                }}>
+                    <View style={{flex: 1, justifyContent: 'center'}}>
+                        <Text numberOfLines={2} style={{paddingRight: 5}}>{text1}</Text>
+                    </View>
+                    <View style={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        height: 44
+                    }}>
+                        <Text numberOfLines={1}>{'￥' + text2}</Text>
+                        <View style={{
+                            borderColor: CommonStyle.MAIN_COLOR_BLUE,
+                            borderWidth: 1,
+                            paddingHorizontal: 10,
+                            paddingVertical: 5,
+                            marginRight: 10
+                        }}>
+                            <Text style={{color: CommonStyle.MAIN_COLOR_BLUE}}>{text3}</Text>
+                        </View>
+                    </View>
+                </View>
+            </TouchableOpacity>
+        )
+
+
+    }
+
+
+
+    renderType5() {
+        let data = this.props.data ? this.props.data : {};
+        let paddingVertical = data && data.paddingVertical ? data.paddingVertical : 15;
+        let text1 = data && data.text1 ? data.text1 : '';
+        let text1Color = data && data.text1Color ? data.text1Color : CommonStyle.TEXT_COLOR;
+        let text1fontSize = data && data.text1fontSize ? data.text1fontSize : 14;
+        let text2 = data && data.text2 ? data.text2 : '';
+        let text2Color = data && data.text2Color ? data.text2Color : CommonStyle.TEXT_COLOR;
+        let text2fontSize = data && data.text2fontSize ? data.text2fontSize : 14;
+        let text3 = data && data.text3 ? data.text3 : '';
+        let text3Color = data && data.text3Color ? data.text3Color : CommonStyle.TEXT_COLOR;
+        let text3fontSize = data && data.text3fontSize ? data.text3fontSize : 14;
+        let onPress = this.props.onPress ? this.props.onPress : ()=> {
+        };
+
+        let image = data && data.image ? data.image : '';
+
+        return(
+            <TouchableOpacity style={{paddingHorizontal: 15, paddingVertical: 10, backgroundColor: 'white'}}
+                              activeOpacity={CommonStyle.activeOpacity} onPress={onPress}>
+
+                <View style={{flexDirection: 'row'}}>
+                    <View style={{justifyContent: 'center', alignItems: 'center', width: 70, height: 70}}>
+                        <Image style={{width: 60, height: 60,margin:5,borderRadius:10}} source={{uri:image}}/>
+                    </View>
+
+                    <View style={{flex:1,marginLeft:5}}>
+                        <View style={{flexDirection: 'row', justifyContent: 'space-between',}}>
+                            <Text style={{lineHeight: 22}}>{text1}</Text>
+                            <Text style={{lineHeight: 22, fontSize: 12, color: 'rgb(66,130,250)'}}>{text2}</Text>
+                        </View>
+                        <View style={{flexDirection: 'row', alignItems: 'center',paddingTop:10}}>
+                            <Text numberOfLines={2} style={{color:'gray'}}>{text3}</Text>
+                        </View>
+                    </View>
+                </View>
+
+            </TouchableOpacity>
+        )
+
+
+    }
+
 
 
 }
