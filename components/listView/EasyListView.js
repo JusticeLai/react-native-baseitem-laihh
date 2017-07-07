@@ -18,8 +18,8 @@ import {
 
 import CommonStyle from '../style/CommonStyle';
 
-let dismissKeyboard = require('dismissKeyboard');//隐藏键盘调用 dismissKeyboard();
-let {width, height} = require('Dimensions').get('window');
+// let dismissKeyboard = require('dismissKeyboard');//隐藏键盘调用 dismissKeyboard();
+let {width, height} = Dimensions.get('window');;
 //第三方侧滑删除组件
 import {SwipeListView, SwipeRow} from 'react-native-swipe-list-view';
 
@@ -242,9 +242,9 @@ export default class EasyListView extends Component {
 
 
     onScroll = ()=> {
-        if (Platform.OS === 'ios') {
-            dismissKeyboard();
-        }
+        // if (Platform.OS === 'ios') {
+        //     dismissKeyboard();
+        // }
     }
 
 
