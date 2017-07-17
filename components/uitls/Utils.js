@@ -100,6 +100,46 @@ export default class Utils  {
         }, [])
     }
 
+    static getDict = (dict) => {
+        let dictX = dict;
+        dictX.marketPrice = dict.marketPrice != undefined ? dict.marketPrice : '';
+        dictX.productId = dict.productId != undefined ? dict.productId : '0';
+        dictX.count = dict.count != undefined ? dict.count : 1;
+        dictX.buyMax = dict.buyMax != undefined ? dict.buyMax : '0';
+        dictX.postPrice = dict.postPrice != undefined ? dict.postPrice : '0';
+        dictX.skuIdImageURL = dict.skuIdImageURL != undefined ? dict.skuIdImageURL : '';
+        dictX.skuPropsStr = dict.skuPropsStr != undefined ? dict.skuPropsStr : '';
+        dictX.skuDescStr = dict.skuDescStr != undefined ? dict.skuDescStr : '';
+        dictX.skuId = dict.skuId != undefined ? dict.skuId : '0';
+
+
+        return dictX;
+    }
+
+    test(){
+        let shopCarArray = [
+            {tite: '商品1', productID: 1, ischecked: false},
+            {tite: '商品2', productID: 2, ischecked: false}]
+
+        let selectArray = [];
+        //全选增加选中ID
+        for (let index in shopCarArray) {
+            selectArray.push(shopCarArray[index].productID)
+        }
+        //全选设置True
+        for (let index in shopCarArray) {
+            let item = shopCarArray[index]
+            for (let index in selectArray) {
+                let productID = selectArray[index]
+                if (item.productID === productID) {
+                    item.ischecked = true;
+                    break;
+                }
+            }
+        }
+        console.log(JSON.stringify(shopCarArray))
+    }
+
 }
 
 

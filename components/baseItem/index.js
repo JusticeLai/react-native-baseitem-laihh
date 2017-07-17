@@ -326,18 +326,24 @@ export default class SCBaseItemView extends Component {
         let text3 = data && data.text3 ? data.text3 : '';
         let text3Color = data && data.text3Color ? data.text3Color : 'gray';
         let text3fontSize = data && data.text3fontSize ? data.text3fontSize : 14;
+        let backgroundColor = data && data.backgroundColor ? data.backgroundColor : 'white';
         let onPress = this.props.onPress ? this.props.onPress : ()=> {
         };
+        let onImagePress = this.props.onImagePress ? this.props.onImagePress : ()=> {
+        };
+
+
+
         let lineHeight = this.props.underLine == false ? 0 : 1;
         let image = data && data.image ? data.image : '';
         let paddingLeftUnderLine = data && data.paddingLeftUnderLine ? data.paddingLeftUnderLine : 15;
         return (
-            <TouchableOpacity style={{paddingTop: paddingVertical, backgroundColor: 'white', justifyContent: 'center',}}
+            <TouchableOpacity style={{paddingTop: paddingVertical, backgroundColor: backgroundColor, justifyContent: 'center',}}
                               activeOpacity={CommonStyle.activeOpacity} onPress={onPress}>
                 <View style={{flexDirection: 'row', paddingHorizontal: 15,}}>
-                    <View style={{justifyContent: 'center', alignItems: 'center', width: 70, height: 70}}>
+                    <TouchableOpacity onPress={onImagePress} style={{justifyContent: 'center', alignItems: 'center', width: 70, height: 70}}>
                         <Image style={{width: 60, height: 60, margin: 5, borderRadius: 10}} source={image}/>
-                    </View>
+                    </TouchableOpacity>
                     <View style={{flex: 1, marginLeft: 5}}>
                         <View style={{flexDirection: 'row', justifyContent: 'space-between',}}>
                             <Text style={{lineHeight: 22, fontSize: text1fontSize, color: text1Color}}>{text1}</Text>
@@ -637,6 +643,8 @@ export default class SCBaseItemView extends Component {
         let text2fontSize = data && data.text2fontSize ? data.text2fontSize : 14;
 
         let image = data && data.image ? data.image : '';
+        let backgroundColor = data && data.backgroundColor ? data.backgroundColor : 'white';
+
         let image2 = data && data.image2 ? data.image2 : '';
         let onPress = this.props.onPress ? this.props.onPress : ()=> {
         };
@@ -644,9 +652,11 @@ export default class SCBaseItemView extends Component {
         let type = this.props.viewType ? this.props.viewType : 0;
         let paddingLeftUnderLine = data && data.paddingLeftUnderLine ? data.paddingLeftUnderLine : 15;
 
+
+
         return (
             <TouchableOpacity
-                style={{paddingTop: paddingVertical + 5, backgroundColor: 'white', flex: 1}}
+                style={{paddingTop: paddingVertical + 5, backgroundColor: backgroundColor, flex: 1}}
                 activeOpacity={CommonStyle.activeOpacity} onPress={onPress}>
                 <View style={{
                     flexDirection: 'row', justifyContent: 'space-between',
@@ -654,10 +664,10 @@ export default class SCBaseItemView extends Component {
                 }}>
                     <View style={{justifyContent: 'center', alignItems: 'center', flexDirection: 'row'}}>
                         <Image source={image} style={{marginHorizontal: 15, width: 22, height: 22,}}/>
-                        <Text style={{color: 'black'}}>{text1}</Text>
+                        <Text style={{color: 'black',fontSize:text1fontSize}}>{text1}</Text>
                     </View>
                     <View style={{justifyContent: 'center', alignItems: 'center', flexDirection: 'row'}}>
-                        {this.renderType11View(type, text2)}
+                        {this.renderType11View(type, text2,text2fontSize)}
                         <Image source={image2} style={{marginHorizontal: 15, width: 12, height: 11}}
                                resizeMode={'contain'}/>
                     </View>
@@ -671,7 +681,7 @@ export default class SCBaseItemView extends Component {
 
 
 
-    renderType11View(type, text2) {
+    renderType11View(type, text2,fontSize) {
         if (type == 2) {
 
             if (text2 == '0' || text2 == 0) {
@@ -686,7 +696,7 @@ export default class SCBaseItemView extends Component {
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
-                        <Text numberOfLines={1} style={{color: 'white'}}>{text2}</Text>
+                        <Text numberOfLines={1} style={{color: 'white',fontSize:fontSize}}>{text2}</Text>
                     </View>
                 )
             }

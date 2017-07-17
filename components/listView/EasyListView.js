@@ -93,7 +93,6 @@ export default class EasyListView extends Component {
                 dict.key = i;
             }
 
-
             return (
 
                 <View style={{flex: 1}}>
@@ -153,6 +152,7 @@ export default class EasyListView extends Component {
                     {this.state.top != '' ?
                         <TouchableOpacity onPress={()=>{
                             this._flatList.scrollToOffset({animated: true, offset: 0});
+                            this.setState({page: '1',top:''});
                         }} style={{
                             backgroundColor: 'gray',
                             position: 'absolute',
