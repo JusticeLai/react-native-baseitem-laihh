@@ -332,8 +332,8 @@ const
             flex: 1,
         },
         emptyFoot: {
+            width: width,
             padding: 10,
-            marginBottom: 20
 
         },
         emptyFootTxt: {

@@ -333,15 +333,16 @@ export default class SCBaseItemView extends Component {
         };
 
 
-
         let lineHeight = this.props.underLine == false ? 0 : 1;
         let image = data && data.image ? data.image : '';
         let paddingLeftUnderLine = data && data.paddingLeftUnderLine ? data.paddingLeftUnderLine : 15;
         return (
-            <TouchableOpacity style={{paddingTop: paddingVertical, backgroundColor: backgroundColor, justifyContent: 'center',}}
-                              activeOpacity={CommonStyle.activeOpacity} onPress={onPress}>
+            <TouchableOpacity
+                style={{paddingTop: paddingVertical, backgroundColor: backgroundColor, justifyContent: 'center',}}
+                activeOpacity={CommonStyle.activeOpacity} onPress={onPress}>
                 <View style={{flexDirection: 'row', paddingHorizontal: 15,}}>
-                    <TouchableOpacity onPress={onImagePress} style={{justifyContent: 'center', alignItems: 'center', width: 70, height: 70}}>
+                    <TouchableOpacity onPress={onImagePress}
+                                      style={{justifyContent: 'center', alignItems: 'center', width: 70, height: 70}}>
                         <Image style={{width: 60, height: 60, margin: 5, borderRadius: 10}} source={image}/>
                     </TouchableOpacity>
                     <View style={{flex: 1, marginLeft: 5}}>
@@ -609,7 +610,6 @@ export default class SCBaseItemView extends Component {
         let backgroundColor = data && data.backgroundColor ? data.backgroundColor : 'white';
 
 
-
         return (
             <TouchableOpacity
                 style={{paddingTop: paddingVertical + 5, backgroundColor: backgroundColor, flex: 1}}
@@ -643,6 +643,8 @@ export default class SCBaseItemView extends Component {
         let text2fontSize = data && data.text2fontSize ? data.text2fontSize : 14;
 
         let image = data && data.image ? data.image : '';
+        let imageWidth = data && data.imageWidth ? data.imageWidth : 20;
+        let imageHeight = data && data.imageHeight ? data.imageHeight : 20;
         let backgroundColor = data && data.backgroundColor ? data.backgroundColor : 'white';
 
         let image2 = data && data.image2 ? data.image2 : '';
@@ -651,7 +653,6 @@ export default class SCBaseItemView extends Component {
         let lineHeight = this.props.underLine == false ? 0 : 1;
         let type = this.props.viewType ? this.props.viewType : 0;
         let paddingLeftUnderLine = data && data.paddingLeftUnderLine ? data.paddingLeftUnderLine : 15;
-
 
 
         return (
@@ -663,13 +664,12 @@ export default class SCBaseItemView extends Component {
                     alignItems: 'center',
                 }}>
                     <View style={{justifyContent: 'center', alignItems: 'center', flexDirection: 'row'}}>
-                        <Image source={image} style={{marginHorizontal: 15, width: 22, height: 22,}}/>
-                        <Text style={{color: 'black',fontSize:text1fontSize}}>{text1}</Text>
+                        {this.renderImage(image,{marginHorizontal: 15, width: imageWidth, height: imageHeight})}
+                        <Text style={{color: 'black', fontSize: text1fontSize}}>{text1}</Text>
                     </View>
                     <View style={{justifyContent: 'center', alignItems: 'center', flexDirection: 'row'}}>
-                        {this.renderType11View(type, text2,text2fontSize)}
-                        <Image source={image2} style={{marginHorizontal: 15, width: 12, height: 11}}
-                               resizeMode={'contain'}/>
+                        {this.renderType11View(type, text2, text2fontSize)}
+                        {this.renderImage(image2,{marginHorizontal: 15, width: 13, height: 13})}
                     </View>
                 </View>
                 {this.renderLine(paddingLeftUnderLine, paddingVertical, lineHeight)}
@@ -678,10 +678,19 @@ export default class SCBaseItemView extends Component {
 
     }
 
+    renderImage(image2, style) {
+        if (image2 == '') {
+            return null
+        }else{
+            return (
+                <Image source={image2} style={style}
+                       resizeMode={'contain'}/>
+            )
+        }
+    }
 
 
-
-    renderType11View(type, text2,fontSize) {
+    renderType11View(type, text2, fontSize) {
         if (type == 2) {
 
             if (text2 == '0' || text2 == 0) {
@@ -696,7 +705,7 @@ export default class SCBaseItemView extends Component {
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
-                        <Text numberOfLines={1} style={{color: 'white',fontSize:fontSize}}>{text2}</Text>
+                        <Text numberOfLines={1} style={{color: 'white', fontSize: fontSize}}>{text2}</Text>
                     </View>
                 )
             }
