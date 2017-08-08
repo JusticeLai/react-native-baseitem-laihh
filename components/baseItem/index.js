@@ -13,6 +13,9 @@ import {
 } from 'react-native';
 
 import CommonStyle from '../style/CommonStyle';
+import BaseTextInput from '../baseTextInput/BaseTextInput';
+import BaseBotton from '../baseBotton/BaseBotton';
+
 let {width, height} = Dimensions.get('window');
 
 export default class SCBaseItemView extends Component {
@@ -61,6 +64,16 @@ export default class SCBaseItemView extends Component {
                 this.renderType7()
             )
         } else if (type == 8) {
+            return(
+                <BaseTextInput
+                    data={this.props.data}
+                    rightOnPress={this.props.rightOnPress}
+                    onPress={this.props.onPress}
+                    onChangeText={this.props.onChangeText}
+                    onSubmitEditing={this.props.onSubmitEditing}
+                />
+            )
+
 
         } else if (type == 9) {
             return (
@@ -78,7 +91,16 @@ export default class SCBaseItemView extends Component {
             return (
                 this.renderType12()
             )
+        } else if (type == 13) {
+            return (
+                <BaseBotton
+                    data={this.props.data}
+                    onPress={this.props.onPress}
+                />
+            )
         }
+
+
     }
 
     renderType1() {
@@ -664,12 +686,12 @@ export default class SCBaseItemView extends Component {
                     alignItems: 'center',
                 }}>
                     <View style={{justifyContent: 'center', alignItems: 'center', flexDirection: 'row'}}>
-                        {this.renderImage(image,{marginHorizontal: 15, width: imageWidth, height: imageHeight})}
+                        {this.renderImage(image, {marginHorizontal: 15, width: imageWidth, height: imageHeight})}
                         <Text style={{color: 'black', fontSize: text1fontSize}}>{text1}</Text>
                     </View>
                     <View style={{justifyContent: 'center', alignItems: 'center', flexDirection: 'row'}}>
                         {this.renderType11View(type, text2, text2fontSize)}
-                        {this.renderImage(image2,{marginHorizontal: 15, width: 13, height: 13})}
+                        {this.renderImage(image2, {marginHorizontal: 15, width: 13, height: 13})}
                     </View>
                 </View>
                 {this.renderLine(paddingLeftUnderLine, paddingVertical, lineHeight)}
@@ -681,7 +703,7 @@ export default class SCBaseItemView extends Component {
     renderImage(image2, style) {
         if (image2 == '') {
             return null
-        }else{
+        } else {
             return (
                 <Image source={image2} style={style}
                        resizeMode={'contain'}/>
