@@ -15,7 +15,7 @@ import {
 } from 'react-native'
 
 
-import CommonStyle from '../style/CommonStyle';
+import CommonStyle from '../style/commonStyle';
 let {width, height} = Dimensions.get('window');
 
 export default class BaseBotton extends Component {
@@ -46,7 +46,6 @@ export default class BaseBotton extends Component {
         let title = data.title ? data.title : '';
         let color = data.color ? data.color : 'white';
         let fontSize = data.fontSize ? data.fontSize : 14;
-        let zIndex = data.zIndex ? data.zIndex : 1;
 
 
         return (

@@ -15,6 +15,10 @@ import {
 import CommonStyle from '../style/CommonStyle';
 import BaseTextInput from '../baseTextInput/BaseTextInput';
 import BaseBotton from '../baseBotton/BaseBotton';
+import MessageButton from '../baseBotton/MessageButton';
+
+
+
 
 let {width, height} = Dimensions.get('window');
 
@@ -98,7 +102,23 @@ export default class SCBaseItemView extends Component {
                     onPress={this.props.onPress}
                 />
             )
+        } else if (type == 14) {
+            return (
+                <MessageButton
+                    title={this.props.title}
+                    time={this.props.time}
+                    color={this.props.color}
+                    borderColor={this.props.borderColor}
+                    backgroundColor={this.props.backgroundColor}
+                    borderWidth={this.props.borderWidth}
+                    isClickMessageBtn={this.props.isClickMessageBtn}
+                    onPress={this.props.onPress}
+                    buttonOnPress={this.props.buttonOnPress}
+                />
+            )
         }
+
+
 
 
     }
