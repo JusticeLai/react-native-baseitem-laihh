@@ -15,7 +15,7 @@ import {
 } from 'react-native'
 
 
-import CommonStyle from '../style/commonStyle';
+import CommonStyle from '../style/CommonStyle';
 let {width, height} = Dimensions.get('window');
 
 export default class BaseBotton extends Component {
@@ -37,6 +37,7 @@ export default class BaseBotton extends Component {
         let height = data.height ? data.height : 44;
         let marginTop = data.marginTop ? data.marginTop : 0;
         let marginBottom = data.marginBottom ? data.marginBottom : 0;
+        let borderRadius = data.borderRadius ? data.borderRadius : 5;
 
         let backgroundColor = data.backgroundColor ? data.backgroundColor : CommonStyle.MAIN_COLOR_BLUE;
 
@@ -46,16 +47,20 @@ export default class BaseBotton extends Component {
         let title = data.title ? data.title : '';
         let color = data.color ? data.color : 'white';
         let fontSize = data.fontSize ? data.fontSize : 14;
+        let zIndex = data.zIndex ? data.zIndex : 0;
 
 
         return (
             <TouchableOpacity onPress={onPress} style={{
                 zIndex: zIndex,
                 height: height,
-                width: width - marginHorizontal,
+                width: width - marginHorizontal*2,
                 justifyContent: 'center',
+                marginLeft:marginHorizontal,
                 alignItems: 'center',
                 backgroundColor: backgroundColor,
+                borderRadius:borderRadius,
+                marginTop:marginTop,
             }}>
 
                 <Text style={{

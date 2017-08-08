@@ -37,13 +37,13 @@ export default class MessageButton extends Component {
     componentWillReceiveProps(nextProps) {
 
 
-            if(nextProps.isClickMessageBtn == true){
+        if(nextProps.isClickMessageBtn == true){
 
-                if(this.state.isFirstEnter =='第一次'){
-                    this.setState({isFirstEnter:'OK'});
-                }
-
+            if(this.state.isFirstEnter =='第一次'){
+                this.setState({isFirstEnter:'OK'});
             }
+
+        }
 
     }
 
