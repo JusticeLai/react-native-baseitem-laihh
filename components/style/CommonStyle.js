@@ -11,7 +11,7 @@ import {
 const colors = {
     //婴桶
     //婴桶
-    MAIN_COLOR_DG: 'rgb(250,50,64)',//背景主色调,红色
+    MAIN_COLOR_DG: '#fe5050',//背景主色调,红色
     MAIN_COLOR_SY: 'rgb(65,130,248)',//背景主色调,蓝色
     MAIN_COLOR_SHOP: 'black',//背景主色调,橙色
     MAIN_COLOR: 'rgb(250,50,64)',//背景主色调,红色
@@ -27,7 +27,7 @@ const colors = {
     MAIN_COLOR_BLUE:'rgb(65,130,248)',  //主颜色---蓝色
     MAIN_COLOR_YELLOW:'rgb(247,180,15)',  //主颜色---黄色
     MAIN_COLOR_ORANGE:'rgb(247,180,15)',  //主颜色---黄色
-    MAIN_COLOR_RED:'rgb(250,50,64)',  //主颜色---黄色
+    MAIN_COLOR_RED:'#fe5050',  //主颜色---黄色
 
 
 
