@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import {
     Alert,
-    Dimensions
+    Dimensions,
+    Keyboard
 } from 'react-native';
 
 import Toast from 'react-native-root-toast';
+
+import DBUtils from './DBUtils';
 // var dismissKeyboard = require('dismissKeyboard');//隐藏键盘调用 dismissKeyboard();
 
 let instance = null;
@@ -39,7 +42,7 @@ export default class Utils  {
     };
     //吐司
     static DismissKeyboard = () => {
-        // dismissKeyboard();
+        Keyboard.dismiss();
     };
 
 
@@ -138,6 +141,11 @@ export default class Utils  {
             }
         }
         console.log(JSON.stringify(shopCarArray))
+    }
+
+
+    static  getDBUtils() {
+        return DBUtils.getDBUtils()
     }
 
 }

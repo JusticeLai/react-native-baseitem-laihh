@@ -9,6 +9,7 @@ import ImageTextView from './components/baseImage/ImageTextView';
 
 import CommonStyle from './components/style/CommonStyle';
 import Utils from './components/uitls/Utils';
+import DBUtils from './components/uitls/DBUtils';
 
 
 let height = Utils.getWindow().height;
@@ -22,6 +23,7 @@ export {
     ImageTextView,
     CommonStyle,
     Utils,
+    DBUtils,
     height,
     width
 }
