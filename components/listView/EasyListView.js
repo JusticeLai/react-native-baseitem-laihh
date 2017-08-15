@@ -332,7 +332,7 @@ const
             flex: 1,
         },
         emptyFoot: {
-            width: width,
+            // width: width,
             padding: 10,
 
         },
