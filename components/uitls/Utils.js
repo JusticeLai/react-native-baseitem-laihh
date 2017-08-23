@@ -5,7 +5,7 @@ import {
     Keyboard
 } from 'react-native';
 
-import Toast from 'react-native-root-toast';
+// import Toast from 'react-native-root-toast';
 
 import DBUtils from './DBUtils';
 // var dismissKeyboard = require('dismissKeyboard');//隐藏键盘调用 dismissKeyboard();
@@ -31,15 +31,11 @@ export default class Utils  {
 
 
     //吐司
-    static Toast = (toast) => {
-        Toast.show(
-            toast,
-            {
-                duration: Toast.durations.SHORT,
-                position: Toast.positions.CENTER
-            }
-        )
+    static Toast = (toast,time) => {
+
+
     };
+
     //吐司
     static DismissKeyboard = () => {
         Keyboard.dismiss();

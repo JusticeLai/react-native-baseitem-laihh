@@ -1,4 +1,5 @@
 import SCBaseItemView from './components/baseItem/index';
+import RadioGroup from './components/baseItem/RadioGroup';
 import EasyListView from './components/listView/EasyListView';
 
 
@@ -18,6 +19,7 @@ let width = Utils.getWindow().width;
 
 export {
     SCBaseItemView,
+    RadioGroup,
     EasyListView,
     BackGroundImageView,
     ImageTextView,

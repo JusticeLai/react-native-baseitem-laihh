@@ -88,10 +88,10 @@ export default class EasyListView extends Component {
 
             let array = this.props.dataSource;
             // console.log(array);
-            for (let i = 0; i < array.length; i++) {
-                let dict = array[i];
-                dict.key = i;
-            }
+            // for (let i = 0; i < array.length; i++) {
+            //     let dict = array[i];
+            //     dict.key = i;
+            // }
 
             return (
 
@@ -121,8 +121,8 @@ export default class EasyListView extends Component {
                             //getItemLayout={(data,index)=>(
                             //{length: ITEM_HEIGHT, offset: (ITEM_HEIGHT+2) * index, index}
                             //)}
-
-                            onEndReachedThreshold={height / 2}
+                            keyExtractor={(item, index)=>item.key = index}
+                            onEndReachedThreshold={1}
                             onEndReached={this.props.LoreMore}
                             onScrollEndDrag={this.handleEndDrag}
                             //onViewableItemsChanged={(info)=>{

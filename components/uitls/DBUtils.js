@@ -30,6 +30,7 @@ export default class DBUtils extends Component {
     }
 
     static  UserInfo = 'UserInfo_KEY';//用户信息
+    static  UserToken = 'UserToken_KEY';//用户信息
     static  APPVersion = 'APPVersion_KEY';//是否新版,或者第一次进入
     static  isLogin = 'isLogin_KEY';//是否登录
     static  androidFirstEnter = 'androidFirstEnter_KEY';//安卓第一次进入
