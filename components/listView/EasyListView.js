@@ -95,7 +95,7 @@ export default class EasyListView extends Component {
 
             return (
 
-                <View style={{flex: 1}}>
+                <View style={{flex: 1,backgroundColor: CommonStyle.PAGE_BG_COLOR}}>
                     {this.props.isHideListView == false ?
                         <FlatList
                             {...this.props}
@@ -174,7 +174,7 @@ export default class EasyListView extends Component {
         }
         else {
             return (
-                <View style={[{flex: 1}]}>
+                <View style={[{flex: 1,backgroundColor: CommonStyle.PAGE_BG_COLOR}]}>
                     {this.props.isHideListView == false ?
                         <ListView
                             {...this.props}
@@ -332,7 +332,7 @@ const
             flex: 1,
         },
         emptyFoot: {
-            // width: width,
+            width: width,
             padding: 10,
 
         },
