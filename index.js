@@ -1,6 +1,7 @@
 import SCBaseItemView from './components/baseItem/index';
 import RadioGroup from './components/baseItem/RadioGroup';
 import EasyListView from './components/listView/EasyListView';
+import MyListView from './components/listView/MyListView';
 
 
 import BackGroundImageView from './components/baseImage/BackGroundImageView';
@@ -21,6 +22,7 @@ export {
     SCBaseItemView,
     RadioGroup,
     EasyListView,
+    MyListView,
     BackGroundImageView,
     ImageTextView,
     CommonStyle,
