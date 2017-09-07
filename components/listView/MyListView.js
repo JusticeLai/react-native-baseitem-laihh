@@ -42,7 +42,9 @@ export default class MyListView extends Component {
 
     constructor(props) {
         super(props)
+
         this.state = {
+            dataSource: this.props.dataSource ? this.props.dataSource : [],
             refreshing: true,
             isHideListView: 'Refreshing',
             isLoreMoreing: 'LoreMoreing',
@@ -50,65 +52,106 @@ export default class MyListView extends Component {
         };
     }
 
+    responseData = [];//请求数据
+    isLoading = true;   //加载控制开关,默认为true
 
-    ReFresh(isReFresh) {
-        if (isReFresh == 'Refreshing') {
-            this.setState({
-                refreshing: true,
-            })
-            // console.warn('加载中');
-        } else if (isReFresh == 'RefreshHaveData') {
-            this.setState({
-                isHideListView: 'RefreshHaveData',
-                refreshing: false,
-            })
-            // console.warn('有数据');
-        } else if (isReFresh == 'RefreshEmpty') {
-            this.setState({
-                isHideListView: 'RefreshEmpty',
-                refreshing: false,
-            })
-            // console.warn('没数据');
-        } else if (isReFresh == 'RefreshError') {
-            this.setState({
-                isHideListView: 'RefreshError',
-                refreshing: false,
-            })
-            // console.warn('刷新异常');
+
+    ReFresh(isReFresh, dataArray) {
+
+        if (this.isLoading == true) {
+            this.isLoading = false;
+            if (isReFresh == 'Refreshing') {
+                this.setState({
+                    refreshing: true,
+                })
+                // console.warn('加载中');
+            } else if (isReFresh == 'RefreshHaveData') {
+
+
+                if (this.isLoading == false) {
+                    this.responseData = []
+                    this.responseData = dataArray;
+
+                    if (this.responseData.length <= 5) {
+                        setTimeout(() => {
+                            this.setState({
+                                isLoreMoreing: LoreMoreEmpty,
+                            })
+                        }, 200);
+                    }
+                    this.setState({
+                        dataSource:dataArray,
+                        isHideListView: 'RefreshHaveData',
+                        refreshing: false,
+                    })
+
+                }
+
+                // console.warn('有数据');
+            } else if (isReFresh == 'RefreshEmpty') {
+                this.setState({
+                    isHideListView: 'RefreshEmpty',
+                    refreshing: false,
+                })
+                // console.warn('没数据');
+            } else if (isReFresh == 'RefreshError') {
+                this.setState({
+                    isHideListView: 'RefreshError',
+                    refreshing: false,
+                })
+                // console.warn('刷新异常');
+            }
         }
+        setTimeout(() => {
+            this.isLoading = true;
+        }, 50);
+
     }
 
 
-    LoreMore(isLoreMore) {
-        if (isLoreMore == 'LoreMoreing') {
-            this.setState({
-                isLoreMoreing: LoreMoreing,
-            })
-            // console.warn('加载中');
-        } else if (isLoreMore == 'LoreMorehaveData') {
-            // console.warn('有数据');
-            setTimeout(() => {
+    LoreMore(isLoreMore,dataArray) {
+
+        if (this.isLoading == true) {
+            this.isLoading = false;
+
+            if (isLoreMore == 'LoreMoreing') {
                 this.setState({
-                    isLoreMoreing: LoreMorehaveData,
+                    isLoreMoreing: LoreMoreing,
                 })
-            }, 1500);
-            // console.warn('有数据');
-        } else if (isLoreMore == 'LoreMoreEmpty') {
-            // console.warn('没数据');
-            setTimeout(() => {
-                this.setState({
-                    isLoreMoreing: LoreMoreEmpty,
-                })
-            }, 1500);
-            // console.warn('没数据');
-        } else if (isLoreMore == 'LoreMoreError') {
-            setTimeout(() => {
-                this.setState({
-                    isLoreMoreing: LoreMoreError,
-                })
-            }, 1500);
-            // console.warn('刷新异常');
+                // console.warn('加载中');
+            } else if (isLoreMore == 'LoreMorehaveData') {
+                // console.warn('有数据');
+
+
+                this.responseData = this.responseData.concat(dataArray);
+                setTimeout(() => {
+                    this.setState({
+                        dataSource: this.responseData,
+                        isLoreMoreing: LoreMorehaveData,
+                    })
+                }, 300);
+                // console.warn('有数据');
+            } else if (isLoreMore == 'LoreMoreEmpty') {
+                // console.warn('没数据');
+                setTimeout(() => {
+                    this.setState({
+                        isLoreMoreing: LoreMoreEmpty,
+                    })
+                }, 300);
+                // console.warn('没数据');
+            } else if (isLoreMore == 'LoreMoreError') {
+                setTimeout(() => {
+                    this.setState({
+                        isLoreMoreing: LoreMoreError,
+                    })
+                }, 300);
+                // console.warn('刷新异常');
+            }
         }
+
+        setTimeout(() => {
+            this.isLoading = true;
+        }, 50);
     }
 
 
@@ -141,7 +184,7 @@ export default class MyListView extends Component {
             return (
                 <FlatList
                     {...this.props}
-                    contentContainerStyle={[{backgroundColor:'rgb(250,250,250)'},this.props.style]}
+                    contentContainerStyle={[{backgroundColor: 'rgb(250,250,250)'}, this.props.style]}
                     removeClippedSubviews={this.props.removeClippedSubviews ? this.props.removeClippedSubviews : false}
                     enableEmptySections={true}
                     //ref={(flatList)=>this.flatList = flatList}
@@ -161,11 +204,11 @@ export default class MyListView extends Component {
                     onEndReached={this.props.LoreMore}
                     onScrollEndDrag={this.handleEndDrag}
 
-                    data={this.props.dataSource}/>
+                    data={this.state.dataSource}/>
             )
         } else if (isHideListView == 'RefreshEmpty') {
             let backgroundColorX = this.props.backgroundColor ? this.props.backgroundColor : 'rgb(222,222,222)'
-            let imageURL =require('../../images/withOut.png')
+            let imageURL = require('../../images/withOut.png')
             let tip = this.props.EmptyStr ? this.props.EmptyStr : '暂无更多,轻触重新请求';
             return (
                 <TouchableOpacity
@@ -241,11 +284,7 @@ export default class MyListView extends Component {
             )
         } else if (this.state.isLoreMoreing == 'LoreMoreError') {
             return (
-                <TouchableOpacity onPress={()=> {
-                    this.props.onPress ? this.props.onPress(2) : ()=> {
-                    }
-                }}>
-                    }> style={styles.emptyFoot}>
+                <TouchableOpacity onPress={()=> {this.props.onPress ? this.props.onPress(2) : ()=> {}}} style={styles.emptyFoot}>
                     <Text style={styles.emptyFootTxt}>{'加载异常,请重新加载'}</Text>
                 </TouchableOpacity>
             )

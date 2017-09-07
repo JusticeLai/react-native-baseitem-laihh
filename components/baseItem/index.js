@@ -16,6 +16,7 @@ import CommonStyle from '../style/CommonStyle';
 import BaseTextInput from '../baseTextInput/BaseTextInput';
 import BaseBotton from '../baseBotton/BaseBotton';
 import MessageButton from '../baseBotton/MessageButton';
+import BaesItem15 from '../baseItem/components/BaesItem15';
 
 
 
@@ -114,6 +115,14 @@ export default class SCBaseItemView extends Component {
                     isClickMessageBtn={this.props.isClickMessageBtn}
                     onPress={this.props.onPress}
                     buttonOnPress={this.props.buttonOnPress}
+                />
+            )
+        } else if (type == 15) {
+            return (
+                <BaesItem15
+                    onPress={this.props.onPress}
+                    onLongPress={this.props.onLongPress}
+                    data={this.props.data}
                 />
             )
         }
