@@ -19,7 +19,8 @@ import {
 import CommonStyle from '../style/CommonStyle';
 
 // let dismissKeyboard = require('dismissKeyboard');//隐藏键盘调用 dismissKeyboard();
-let {width, height} = Dimensions.get('window');;
+let {width, height} = Dimensions.get('window');
+;
 //第三方侧滑删除组件
 import {SwipeListView, SwipeRow} from 'react-native-swipe-list-view';
 
@@ -31,14 +32,14 @@ export default class EasyListView extends Component {
 
         this.state = {
             loading: true,
-            top:'',
+            top: '',
             page: '1',
             list: [],
         }
     }
 
     static propTypes = {
-        Refresh: React.PropTypes.func.isRequired, // 跳转到对应tab的方法
+        // Refresh: React.PropTypes.func.isRequired, // 跳转到对应tab的方法
         // LoreMore: React.PropTypes.func.isRequired, // 跳转到对应tab的方法
         // renderRow: React.PropTypes.func.isRequired, // 跳转到对应tab的方法
         // dataSource: React.PropTypes.object.isRequired, // 跳转到对应tab的方法
@@ -85,7 +86,6 @@ export default class EasyListView extends Component {
                 </View>
             )
         } else if (type == 3) {
-
             let array = this.props.dataSource;
             // console.log(array);
             // for (let i = 0; i < array.length; i++) {
@@ -94,8 +94,7 @@ export default class EasyListView extends Component {
             // }
 
             return (
-
-                <View style={{flex: 1,backgroundColor: CommonStyle.PAGE_BG_COLOR}}>
+                <View style={{flex: 1, backgroundColor: CommonStyle.PAGE_BG_COLOR}}>
                     {this.props.isHideListView == false ?
                         <FlatList
                             {...this.props}
@@ -122,7 +121,7 @@ export default class EasyListView extends Component {
                             //{length: ITEM_HEIGHT, offset: (ITEM_HEIGHT+2) * index, index}
                             //)}
                             keyExtractor={(item, index)=>item.key = index}
-                            onEndReachedThreshold={1}
+                            onEndReachedThreshold={0.1}
                             onEndReached={this.props.LoreMore}
                             onScrollEndDrag={this.handleEndDrag}
                             //onViewableItemsChanged={(info)=>{
@@ -131,50 +130,79 @@ export default class EasyListView extends Component {
                             data={array}/>
                         : this.ActivityIndicator()
                     }
-
-
-                    {/*{this.state.page != '1' ?*/}
-                    {/*<View style={{*/}
-                    {/*backgroundColor: 'gray',*/}
-                    {/*position: 'absolute',*/}
-                    {/*width: 36,*/}
-                    {/*height: 36,*/}
-                    {/*right: (width - 36) / 2,*/}
-                    {/*bottom: 10,*/}
-                    {/*borderRadius: 18,*/}
-                    {/*justifyContent: 'center',*/}
-                    {/*alignItems: 'center'*/}
-                    {/*}}>*/}
-                    {/*<Text style={{color: 'white',fontSize:12}}>{this.state.page + '' + '/' + this.props.pages}</Text>*/}
-                    {/*</View> : null*/}
-                    {/*}*/}
-
                     {this.state.top != '' ?
-                        <TouchableOpacity onPress={()=>{
+                        <TouchableOpacity onPress={()=> {
                             this._flatList.scrollToOffset({animated: true, offset: 0});
-                            this.setState({page: '1',top:''});
+                            this.setState({page: '1', top: ''});
                         }} style={{
                             backgroundColor: 'gray',
                             position: 'absolute',
                             width: 36,
                             height: 36,
-                            right: width*0.05,
+                            right: width * 0.05,
                             bottom: 10,
                             borderRadius: 18,
                             justifyContent: 'center',
                             alignItems: 'center'
                         }}>
-                            <Text style={{color: 'white',fontSize:12}}>{'Top'}</Text>
+                            <Text style={{color: 'white', fontSize: 12}}>{'Top'}</Text>
                         </TouchableOpacity> : null
                     }
                 </View>
-
-
             )
+        }
+        else if (type == 4) {
+            return (
+                <View style={{flex: 1, backgroundColor: CommonStyle.PAGE_BG_COLOR}}>
+                    {this.props.status == 'RefreshHaveData' ?
+                        <FlatList
+                            {...this.props}
+                            contentContainerStyle={[{backgroundColor: CommonStyle.PAGE_BG_COLOR}, this.props.style]}
+                            removeClippedSubviews={this.props.removeClippedSubviews ? this.props.removeClippedSubviews : false}
+                            enableEmptySections={true}
+                            ref={(flatList)=>this._flatList = flatList}
+                            ListHeaderComponent={this.props.renderHeader ? this.props.renderHeader : null}
+                            ListFooterComponent={this.renderFooter2}
+                            renderItem={this.props.renderRow}
+                            numColumns={this.props.numColumns ? this.props.numColumns : 1}
+                            showsVerticalScrollIndicator={false}
+                            ItemSeparatorComponent={this.props.renderSeparator ? this.props.renderSeparator :this.renderSeparator}
+                            refreshControl={
+                                <RefreshControl
+                                    refreshing={this.props.refreshing}
+                                    onRefresh={this.props.Refresh}
+                                    title="Loading..."/>
+                            }
+                            keyExtractor={(item, index)=>item.key = index}
+                            onEndReachedThreshold={0.1}
+                            onEndReached={this.props.LoreMore}
+                            onScrollEndDrag={this.handleEndDrag}
+                            data={this.props.dataSource}/>
+                        : this.renderBodyView(this.props.status)
+                    }
+                    {this.state.top != '' ?
+                        <TouchableOpacity onPress={()=> {
+                            this._flatList.scrollToOffset({animated: true, offset: 0});
+                            this.setState({page: '1', top: ''});
+                        }} style={{
+                            backgroundColor: 'gray',
+                            position: 'absolute',
+                            width: 36,
+                            height: 36,
+                            right: width * 0.05,
+                            bottom: 10,
+                            borderRadius: 18,
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}>
+                            <Text style={{color: 'white', fontSize: 12}}>{'Top'}</Text>
+                        </TouchableOpacity> : null
+                    }
+                </View>)
         }
         else {
             return (
-                <View style={[{flex: 1,backgroundColor: CommonStyle.PAGE_BG_COLOR}]}>
+                <View style={[{flex: 1, backgroundColor: CommonStyle.PAGE_BG_COLOR}]}>
                     {this.props.isHideListView == false ?
                         <ListView
                             {...this.props}
@@ -204,6 +232,11 @@ export default class EasyListView extends Component {
 
     }
 
+
+    renderSeparator =()=>{
+        return null
+    }
+
     isEnter = false;
     handleEndDrag = (event, _scrollView)=> {
         var endposition = event.nativeEvent.contentOffset.y;//取得拖拉后的位置
@@ -226,7 +259,7 @@ export default class EasyListView extends Component {
         if (page >= 1) {
             if (this.isEnter == false) {
                 this.isEnter = true;
-                this.setState({page: page + 1,top:'top'});
+                this.setState({page: page + 1, top: 'top'});
                 setTimeout(() => {
                     this.setState({page: '1'});
                     this.isEnter = false;
@@ -234,7 +267,7 @@ export default class EasyListView extends Component {
             }
         }
         if (page == 0) {
-            this.setState({page: '1',top:''});
+            this.setState({page: '1', top: ''});
         }
         console.log(page);
         console.log(height);
@@ -321,6 +354,116 @@ export default class EasyListView extends Component {
     }
 
 
+
+    renderBodyView(isHideListView) {
+
+        if (isHideListView == 'Refreshing') {
+            return (
+                <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                    <View style={{
+                        width: 110,
+                        height: 110,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundColor: 'gray',
+                        borderRadius: 5
+                    }}>
+                        <ActivityIndicator color='white' size='large'/>
+                        <Text style={{marginTop: 15, color: 'white'}}>{'正在加载中....'}</Text>
+                    </View>
+                </View>
+            );
+
+        } else if (isHideListView == 'RefreshEmpty') {
+            let backgroundColorX = this.props.backgroundColor ? this.props.backgroundColor : 'rgb(222,222,222)'
+            let imageURL = require('../../images/withOut.png')
+            let tip = this.props.EmptyStr ? this.props.EmptyStr : '暂无更多,轻触重新请求';
+            return (
+                <TouchableOpacity
+                    style={{
+                        flex: 1,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundColor: backgroundColorX,
+                    }}
+                    onPress={()=> {
+                        this.props.onPress ? this.props.onPress(0) : ()=> {
+                        }
+                    }}>
+                    <View style={{flex: 1, justifyContent: 'flex-end', alignItems: 'center'}}>
+                        <Image source={imageURL} style={{width: 100, height: 100}}/>
+                    </View>
+                    <View style={{flex: 1, alignItems: 'center', marginTop: 10}}><Text
+                        style={{color: '#999'}}>{tip}</Text></View>
+                </TouchableOpacity>
+            )
+        } else if (isHideListView == 'RefreshError') {
+            let backgroundColorX = this.props.backgroundColor ? this.props.backgroundColor : 'rgb(222,222,222)'
+            let imageURL = require('../../images/errorTip.png')
+            let tip = this.props.ErrorStr ? this.props.ErrorStr : '加载异常,轻触重新请求';
+            return (
+                <TouchableOpacity
+                    style={{
+                        flex: 1,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundColor: backgroundColorX,
+                    }}
+                    onPress={()=> {
+                        this.props.onPress ? this.props.onPress(1) : ()=> {
+                        }
+                    }}>
+                    <View style={{flex: 1, justifyContent: 'flex-end', alignItems: 'center'}}>
+                        <Image source={imageURL} style={{width: 100, height: 100}}/>
+                    </View>
+                    <View style={{flex: 1, alignItems: 'center', marginTop: 10}}><Text
+                        style={{color: '#999'}}>{tip}</Text></View>
+                </TouchableOpacity>
+            )
+        } else {
+
+        }
+    }
+
+    renderFooter2 = ()=> {
+
+        if (this.props.isLoreMoreing == 'LoreMoreing') {
+            // let isEmptyFootStr = this.props.isEmptyFoot == true ? '上拉加载更多' : '没有更多数据了';//数据是否加载完成
+            return (
+                <View style={styles.emptyFoot}>
+                    <ActivityIndicator color='gray' size='small'/>
+                    <Text style={styles.emptyFootTxt}>{'正在加载.....'}</Text>
+                </View>
+            )
+        } else if (this.props.isLoreMoreing == 'LoreMorehaveData') {
+            return (
+                <View style={styles.emptyFoot}>
+                    <ActivityIndicator color='gray' size='small'/>
+                    <Text style={styles.emptyFootTxt}>{'正在加载.....'}</Text>
+                </View>
+            )
+        } else if (this.props.isLoreMoreing == 'LoreMoreEmpty') {
+            return (
+                <View style={styles.emptyFoot}>
+                    <Text style={styles.emptyFootTxt}>{'暂无更多数据'}</Text>
+                </View>
+            )
+        } else if (this.props.isLoreMoreing == 'LoreMoreError') {
+            return (
+                <TouchableOpacity onPress={()=> {this.props.onPress ? this.props.onPress(2) : ()=> {}}} style={styles.emptyFoot}>
+                    <Text style={styles.emptyFootTxt}>{'加载异常,请重新加载'}</Text>
+                </TouchableOpacity>
+            )
+        } else {
+
+        }
+
+
+    }
+
+
+
+
 }
 
 const
@@ -333,7 +476,9 @@ const
         },
         emptyFoot: {
             width: width,
+            // flex:1,
             padding: 10,
+
 
         },
         emptyFootTxt: {

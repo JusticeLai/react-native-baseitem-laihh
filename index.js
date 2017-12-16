@@ -9,13 +9,35 @@ import ImageTextView from './components/baseImage/ImageTextView';
 
 
 
+
+
+
 import CommonStyle from './components/style/CommonStyle';
 import Utils from './components/uitls/Utils';
 import DBUtils from './components/uitls/DBUtils';
-
+import {playSound} from './index2';
 
 let height = Utils.getWindow().height;
 let width = Utils.getWindow().width;
+
+
+import React, { Component } from 'react';
+import { requireNativeComponent, DeviceEventEmitter, NativeModules,Platform} from 'react-native';
+
+
+
+let RCTMessageView = requireNativeComponent('MyCustomView', MessageView);
+class MessageView extends Component {
+  render() {
+
+    console.warn('执行了index')
+    return <RCTMessageView style={{flex:1}} {...this.props}/>
+  }
+}
+
+
+
+
 
 
 export {
@@ -29,6 +51,9 @@ export {
     Utils,
     DBUtils,
     height,
-    width
+    width,
+    MessageView,
+    playSound,
 }
+
 

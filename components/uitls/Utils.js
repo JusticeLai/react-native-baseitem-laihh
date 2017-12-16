@@ -35,8 +35,8 @@ export default class Utils  {
         Toast.show(
             toast,
             {
-                duration: Toast.durations.SHORT,
-                position: Toast.positions.CENTER
+                duration: 1500,
+                position: Toast.positions.BOTTOM
             }
         )
     };
