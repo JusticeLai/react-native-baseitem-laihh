@@ -9,31 +9,34 @@ import ImageTextView from './components/baseImage/ImageTextView';
 
 
 
+import md5 from './components/three/md5';
+
+
 
 
 
 import CommonStyle from './components/style/CommonStyle';
 import Utils from './components/uitls/Utils';
 import DBUtils from './components/uitls/DBUtils';
-import {playSound} from './index2';
+// import {playSound} from './index2';
 
 let height = Utils.getWindow().height;
 let width = Utils.getWindow().width;
 
 
-import React, { Component } from 'react';
-import { requireNativeComponent, DeviceEventEmitter, NativeModules,Platform} from 'react-native';
+// import React, { Component } from 'react';
+// import { requireNativeComponent, DeviceEventEmitter, NativeModules,Platform} from 'react-native';
 
 
 
-let RCTMessageView = requireNativeComponent('MyCustomView', MessageView);
-class MessageView extends Component {
-  render() {
-
-    console.warn('执行了index')
-    return <RCTMessageView style={{flex:1}} {...this.props}/>
-  }
-}
+// let RCTMessageView = requireNativeComponent('MyCustomView', MessageView);
+// class MessageView extends Component {
+//   render() {
+//
+//     console.warn('执行了index')
+//     return <RCTMessageView style={{flex:1}} {...this.props}/>
+//   }
+// }
 
 
 
@@ -52,8 +55,9 @@ export {
     DBUtils,
     height,
     width,
-    MessageView,
-    playSound,
+    md5,
+    // MessageView,
+    // playSound,
 }
 
 
