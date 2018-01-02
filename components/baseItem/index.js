@@ -330,7 +330,7 @@ export default class SCBaseItemView extends Component {
                         width: 90,
                         height: 100,
                     }}>
-                        <Image style={{width: 80, height: 80, margin: 5}} source={{uri: image}}/>
+                        {image == '' ? null : <Image style={{width: 80, height: 80, margin: 5}} source={{uri: image}}/>}
                     </View>
                     <View style={{
                         flex: 1,
