@@ -14,6 +14,7 @@ import ImageTextView from './components/baseImage/ImageTextView';
 import md5 from './components/three/md5';
 
 import CountdownView from './components/three/CountdownView';//定时器
+import BaseNavigationBar from './components/widget/BaseNavigationBar';//定时器
 
 
 
@@ -61,6 +62,7 @@ export {
     width,
     md5,
     CountdownView,
+    BaseNavigationBar,
     // MessageView,
     // playSound,
 }
