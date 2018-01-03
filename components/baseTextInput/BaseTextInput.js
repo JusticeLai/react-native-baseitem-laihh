@@ -103,6 +103,8 @@ export default class BaseTextInput extends Component {
         let titleColor = data.titleColor ? data.titleColor : 'white';
         let placeholderTextColor = data.placeholderTextColor ? data.placeholderTextColor : 'white';
 
+        let keyboardType = data.keyboardType ? data.keyboardType : 'default';
+
 
         return (
             <TouchableOpacity onPress={onPress} style={{
@@ -150,6 +152,7 @@ export default class BaseTextInput extends Component {
                             fontSize: 14,
                             color: titleColor,
                         }}
+                        keyboardType={keyboardType}
                         textAlignVertical={'top'}
                         secureTextEntry={secureTextEntry}
                         value={title}
