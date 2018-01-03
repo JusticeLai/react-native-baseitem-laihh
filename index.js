@@ -4,12 +4,16 @@ import EasyListView from './components/listView/EasyListView';
 import MyListView from './components/listView/MyListView';
 
 
+
+
 import BackGroundImageView from './components/baseImage/BackGroundImageView';
 import ImageTextView from './components/baseImage/ImageTextView';
 
 
 
 import md5 from './components/three/md5';
+
+import CountdownView from './components/three/CountdownView';//定时器
 
 
 
@@ -56,6 +60,7 @@ export {
     height,
     width,
     md5,
+    CountdownView,
     // MessageView,
     // playSound,
 }
