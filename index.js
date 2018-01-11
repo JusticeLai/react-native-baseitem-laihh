@@ -13,6 +13,7 @@ import ImageTextView from './components/baseImage/ImageTextView';
 
 import md5 from './components/three/md5';
 
+import Swiper from './components/three/Swiper';//广告轮播器
 import CountdownView from './components/three/CountdownView';//定时器
 import BaseNavigationBar from './components/widget/BaseNavigationBar';//定时器
 
@@ -63,6 +64,7 @@ export {
     md5,
     CountdownView,
     BaseNavigationBar,
+    Swiper,
     // MessageView,
     // playSound,
 }
