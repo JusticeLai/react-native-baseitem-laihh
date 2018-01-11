@@ -38,6 +38,7 @@ export default class BaseNavigationBar extends Component {
 
 
 
+        let height = this.props.height ? this.props.height : Platform.OS == 'ios' ? 68 : 50;
 
         let editable = true;
 
@@ -49,7 +50,7 @@ export default class BaseNavigationBar extends Component {
 
 
         return (
-            <View style={{height: Platform.OS == 'ios' ? 68 : 50, backgroundColor: backgroundColor}}>
+            <View style={{height:height, backgroundColor: backgroundColor}}>
                 <View style={{height: Platform.OS == 'ios' ? 20 : 0, backgroundColor: backgroundColor}}/>
 
                 {this.renderContainView(type, backgroundColor, titleColor, titleFontSize, onLeftPress,onRightPress, SearchImage,ErrorImage, onChangeText,placeholder,editable)}
@@ -75,7 +76,7 @@ export default class BaseNavigationBar extends Component {
                             {this.renderLeftView(this.props.leftArray, onLeftPress)}
                         </View>
 
-                        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                        <View style={{alignItems: 'center', justifyContent: 'center',flex:1}}>
                             <Text numberOfLines={1} style={{color: titleColor, fontSize: titleFontSize}} onPress={()=> {
                             }}>{this.props.title}</Text>
                         </View>
@@ -109,15 +110,15 @@ export default class BaseNavigationBar extends Component {
                         </View>
 
                         <TouchableOpacity activeOpacity={1} onPress={onChangeText}
-                            style={{
-                                flex: 1,
-                                height: 43,
-                                alignItems: 'center',
-                                justifyContent: 'flex-start',
-                                backgroundColor: 'transparent',
-                                paddingHorizontal: 10,
-                                flexDirection: 'row',
-                            }}>
+                                          style={{
+                                              flex: 1,
+                                              height: 43,
+                                              alignItems: 'center',
+                                              justifyContent: 'flex-start',
+                                              backgroundColor: 'transparent',
+                                              paddingHorizontal: 10,
+                                              flexDirection: 'row',
+                                          }}>
                             <View
                                 style={{
                                     height: 32,
