@@ -22,7 +22,7 @@ import CommonStyle from '../style/CommonStyle';
 let {width, height} = Dimensions.get('window');
 
 //第三方侧滑删除组件
-import {SwipeListView, SwipeRow} from 'react-native-swipe-list-view';
+import SwipeListView from '../three/Swipe-ListView/SwipeListView';
 
 export default class EasyListView extends Component {
 
