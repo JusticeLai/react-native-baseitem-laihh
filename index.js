@@ -18,6 +18,9 @@ import CountdownView from './components/three/CountdownView';//定时器
 import BaseNavigationBar from './components/widget/BaseNavigationBar';//定时器
 
 
+import SwipeListView from './components/three/Swipe-ListView/SwipeListView';//侧滑删除
+import SwipeRow from './components/three/Swipe-ListView/SwipeRow';//侧滑删除
+
 
 
 
@@ -64,7 +67,9 @@ export {
     md5,
     CountdownView,
     BaseNavigationBar,
-    Swiper,
+    Swiper,//广告轮播
+    SwipeListView,//侧滑删除
+    SwipeRow,//侧滑删除
     // MessageView,
     // playSound,
 }
