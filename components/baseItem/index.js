@@ -317,6 +317,10 @@ export default class SCBaseItemView extends Component {
         let image = data && data.image ? data.image : '';
         let paddingLeftUnderLine = data && data.paddingLeftUnderLine ? data.paddingLeftUnderLine : 15;
 
+        let topString = data.topString ? data.topString : '';
+
+        let topString2 = data.topString2 ? data.topString2 : '';
+
         return (
             <TouchableOpacity onPress={onPress} style={{backgroundColor: 'white'}}>
                 <View style={{
@@ -332,6 +336,8 @@ export default class SCBaseItemView extends Component {
                         height: 100,
                     }}>
                         {image == '' ? null : <Image style={{width: 80, height: 80, margin: 5}} source={{uri: image}}/>}
+
+                        {this.renderType8ImageView(topString, topString2)}
                     </View>
                     <View style={{
                         flex: 1,
@@ -786,6 +792,59 @@ export default class SCBaseItemView extends Component {
             }}/>
         );
     }
+
+
+    renderType8ImageView(topString, topString2) {
+        if (topString != '' && topString2 == '') {
+            //显示第一个
+            return this.renderTopImageString(0, 0, topString)
+        } else if (topString == '' && topString2 != '') {
+            //显示第二个--位置第一个
+            return this.renderTopImageString(0, 0, topString2)
+        } else if (topString != '' && topString2 != '') {
+            //显示第两个
+            return (
+                <View style={{position: 'absolute', left: 0, top: 0}}>
+                    {this.renderTopImageString(0, 0, topString)}
+                    {this.renderTopImageString(33, 0, topString2)}
+                </View>
+            )
+        }
+    }
+
+    renderTopImageString(left, top, topString) {
+        let topImage = require('../../images/buygive2.png');
+        return (
+            <View style={{
+                width: 30,
+                height: 30,
+                position: 'absolute',
+                left: left,
+                top: top,
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}>
+                {topString != undefined && topString != '' ? <Image style={{
+                    width: 30,
+                    height: 30,
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+
+                }} source={topImage}/> : null}
+                {topString != undefined ? <Text style={{
+                    color: 'white',
+                    fontSize: 12,
+                    backgroundColor: 'transparent'
+                }}>{topString}</Text> : null}
+            </View>
+
+        )
+    }
+
+
+
+
 
 
 }
