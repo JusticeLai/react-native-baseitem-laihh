@@ -806,7 +806,7 @@ export default class SCBaseItemView extends Component {
             return (
                 <View style={{position: 'absolute', left: 0, top: 0}}>
                     {this.renderTopImageString(0, 0, topString)}
-                    {this.renderTopImageString(33, 0, topString2)}
+                    {this.renderTopImageString(23, 0, topString2)}
                 </View>
             )
         }
@@ -816,8 +816,8 @@ export default class SCBaseItemView extends Component {
         let topImage = require('../../images/buygive2.png');
         return (
             <View style={{
-                width: 30,
-                height: 30,
+                width: 20,
+                height: 23,
                 position: 'absolute',
                 left: left,
                 top: top,
@@ -825,8 +825,8 @@ export default class SCBaseItemView extends Component {
                 alignItems: 'center'
             }}>
                 {topString != undefined && topString != '' ? <Image style={{
-                    width: 30,
-                    height: 30,
+                    width: 20,
+                    height: 23,
                     position: 'absolute',
                     left: 0,
                     top: 0,
@@ -834,7 +834,7 @@ export default class SCBaseItemView extends Component {
                 }} source={topImage}/> : null}
                 {topString != undefined ? <Text style={{
                     color: 'white',
-                    fontSize: 12,
+                    fontSize: 7,
                     backgroundColor: 'transparent'
                 }}>{topString}</Text> : null}
             </View>
