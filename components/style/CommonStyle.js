@@ -26,7 +26,7 @@ const colors = {
     RED_COLOR:'#ff3c00',  //红色
     MAIN_COLOR_BLUE:'rgb(65,130,248)',  //主颜色---蓝色
     MAIN_COLOR_YELLOW:'rgb(247,180,15)',  //主颜色---黄色
-    MAIN_COLOR_ORANGE:'rgb(247,180,15)',  //主颜色---黄色
+    MAIN_COLOR_ORANGE:'rgb(253,144,54)',  //主颜色---黄色
     MAIN_COLOR_RED:'#fe5050',  //主颜色---黄色
 
 

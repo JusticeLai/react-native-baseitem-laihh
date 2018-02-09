@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 import {
     View,
     Text,
@@ -11,6 +11,9 @@ import {
     Dimensions,
     Platform
 } from 'react-native';
+
+
+// import PropTypes from 'prop-types'
 
 import CommonStyle from '../style/CommonStyle';
 import BaseTextInput from '../baseTextInput/BaseTextInput';

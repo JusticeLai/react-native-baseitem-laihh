@@ -78,7 +78,7 @@ export default class EasyListView extends Component {
                             showsVerticalScrollIndicator={false}
                             removeClippedSubviews={this.props.removeClippedSubviews ? this.props.removeClippedSubviews : false}
                             onEndReached={this.props.LoreMore}
-                            renderFooter={this.renderFooter}
+                            renderFooter={this.props.renderFooter ? this.props.renderFooter :this.renderFooter}
                             onScroll={this.onScroll}
                         />
                         : this.ActivityIndicator()
