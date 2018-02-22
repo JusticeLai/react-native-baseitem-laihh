@@ -10,9 +10,9 @@ import {
     TextInput,
     TouchableOpacity,
     InteractionManager,
-    Keyboard
+    Keyboard,
+    Dimensions
 } from 'react-native';
-import Dimensions from 'Dimensions'
 let {width, height} = Dimensions.get('window');
 
 export default class CodePushAlertView extends Component {
