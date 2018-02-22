@@ -16,6 +16,7 @@ import md5 from './components/three/md5';
 import Swiper from './components/three/Swiper';//广告轮播器
 import CountdownView from './components/three/CountdownView';//定时器
 import BaseNavigationBar from './components/widget/BaseNavigationBar';//定时器
+import CodePushAlertView from './components/widget/CodePushAlertView';//定时器
 
 
 import SwipeListView from './components/three/Swipe-ListView/SwipeListView';//侧滑删除
@@ -67,6 +68,7 @@ export {
     md5,
     CountdownView,
     BaseNavigationBar,
+    CodePushAlertView,
     Swiper,//广告轮播
     SwipeListView,//侧滑删除
     SwipeRow,//侧滑删除
