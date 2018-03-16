@@ -2,8 +2,9 @@
 
 import React, {
 	Component,
-	PropTypes,
 } from 'react';
+
+const PropTypes = require('prop-types');
 import {
 	Animated,
 	PanResponder,

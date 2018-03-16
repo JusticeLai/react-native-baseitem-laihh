@@ -6,7 +6,8 @@
  * Copyright (c) 2017 ljunb <cookiejlim@gmail.com>
  */
 
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
+const PropTypes = require('prop-types');
 import {
   StyleSheet,
   Text,
