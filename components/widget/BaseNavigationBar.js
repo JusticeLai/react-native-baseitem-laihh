@@ -64,7 +64,7 @@ export default class BaseNavigationBar extends Component {
         if (type == '') {
             return (
                 <View style={{flex: 1}}>
-                    <StatusBar  hidden={Platform.OS == 'ios' ? false :true} translucent={Platform.OS == 'ios' ? false :true} backgroundColor={backgroundColor} barStyle="light-content"/>
+                    <StatusBar   backgroundColor={backgroundColor} barStyle="light-content"/>
                     <View style={{
                         flexDirection: 'row',
                         height: 43+5,
