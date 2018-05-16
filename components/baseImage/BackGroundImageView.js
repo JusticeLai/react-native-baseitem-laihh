@@ -2,7 +2,7 @@
  * Created by lipeiwei on 2017/1/6.
  */
 
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 import {
     View,
     Text,
