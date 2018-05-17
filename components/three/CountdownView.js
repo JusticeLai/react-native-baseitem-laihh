@@ -9,12 +9,13 @@
 import React, { PureComponent } from 'react';
 const PropTypes = require('prop-types');
 import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  AppState,
-  NetInfo,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+    AppState,
+    ViewPropTypes,
+    NetInfo,
 } from 'react-native';
 
 /**
@@ -46,13 +47,14 @@ const styles = StyleSheet.create({
 });
 
 export default class Countdown extends PureComponent {
+
   static propTypes = {
-    style: View.propTypes.style,
+    style: ViewPropTypes.style,
     title: PropTypes.string,
     time: PropTypes.number,
     overTitle: PropTypes.string,
     titleStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
-    countingStyle: View.propTypes.style,
+    countingStyle: ViewPropTypes.style,
     countingTitleTemplate: PropTypes.string,
     countingTitleStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
     shouldStartCountdown: PropTypes.func,
@@ -66,6 +68,34 @@ export default class Countdown extends PureComponent {
     countingTitleTemplate: '{time}s后重新获取',
     shouldStartCountdown: () => {},
   };
+
+
+  // getDefaultProps() {
+  //   return {
+  //     title: '获取短信验证码',
+  //     time: 30,
+  //     overTitle: '重新获取',
+  //     countingTitleTemplate: '{time}s后重新获取',
+  //     shouldStartCountdown: () => {},
+  //   };
+  // }
+  //
+  // propTypes: {
+  //   style: View.propTypes.style,
+  //   title: PropTypes.string,
+  //   time: PropTypes.number,
+  //   overTitle: PropTypes.string,
+  //   titleStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
+  //   countingStyle: View.propTypes.style,
+  //   countingTitleTemplate: PropTypes.string,
+  //   countingTitleStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
+  //   shouldStartCountdown: PropTypes.func,
+  //   onNetworkFailed: PropTypes.func,
+  // }
+
+
+
+
 
   constructor(props) {
     super(props);
@@ -183,13 +213,13 @@ export default class Countdown extends PureComponent {
   render() {
     const { status, second } = this.state;
     const {
-      title, style, overTitle, titleStyle,
-      countingTitleTemplate, countingStyle, countingTitleStyle
+        title, style, overTitle, titleStyle,
+        countingTitleTemplate, countingStyle, countingTitleStyle
     } = this.props;
 
     let promptTitle = title,
-      containerStyle = [styles.container, style],
-      textStyle = [styles.title, titleStyle];
+        containerStyle = [styles.container, style],
+        textStyle = [styles.title, titleStyle];
 
     if (status === CountdownStatus.Counting) {
       promptTitle = countingTitleTemplate.replace('{time}', second);
@@ -200,14 +230,14 @@ export default class Countdown extends PureComponent {
     }
 
     return (
-      <TouchableOpacity
-        disabled={ status === CountdownStatus.Counting }
-        activeOpacity={0.75}
-        style={containerStyle}
-        onPress={this.handlePress}
-      >
-        <Text style={textStyle}>{promptTitle}</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+            disabled={ status === CountdownStatus.Counting }
+            activeOpacity={0.75}
+            style={containerStyle}
+            onPress={this.handlePress}
+        >
+          <Text style={textStyle}>{promptTitle}</Text>
+        </TouchableOpacity>
     );
   }
 }

@@ -18,6 +18,144 @@ import SwipeRow from './SwipeRow';
  */
 class SwipeListView extends Component {
 
+
+
+	static propTypes = {
+		// style: ViewPropTypes.style,
+		/**
+		 * How to render a row. Should return a valid React Element.
+		 */
+		renderRow: PropTypes.func.isRequired,
+		/**
+		 * How to render a hidden row (renders behind the row). Should return a valid React Element.
+		 * This is required unless renderRow is passing a SwipeRow.
+		 */
+		renderHiddenRow: PropTypes.func,
+		/**
+		 * TranslateX value for opening the row to the left (positive number)
+		 */
+		leftOpenValue: PropTypes.number,
+		/**
+		 * TranslateX value for opening the row to the right (negative number)
+		 */
+		rightOpenValue: PropTypes.number,
+		/**
+		 * TranslateX value for stop the row to the left (positive number)
+		 */
+		stopLeftSwipe: PropTypes.number,
+		/**
+		 * TranslateX value for stop the row to the right (negative number)
+		 */
+		stopRightSwipe: PropTypes.number,
+		/**
+		 * Should open rows be closed when the listView begins scrolling
+		 */
+		closeOnScroll: PropTypes.bool,
+		/**
+		 * Should open rows be closed when a row is pressed
+		 */
+		closeOnRowPress: PropTypes.bool,
+		/**
+		 * Should open rows be closed when a row begins to swipe open
+		 */
+		closeOnRowBeginSwipe: PropTypes.bool,
+		/**
+		 * Disable ability to swipe rows left
+		 */
+		disableLeftSwipe: PropTypes.bool,
+		/**
+		 * Disable ability to swipe rows right
+		 */
+		disableRightSwipe: PropTypes.bool,
+		/**
+		 * Enable hidden row onLayout calculations to run always.
+		 *
+		 * By default, hidden row size calculations are only done on the first onLayout event
+		 * for performance reasons.
+		 * Passing ```true``` here will cause calculations to run on every onLayout event.
+		 * You may want to do this if your rows' sizes can change.
+		 * One case is a SwipeListView with rows of different heights and an options to delete rows.
+		 */
+		recalculateHiddenLayout: PropTypes.bool,
+		/**
+		 * Called when a swipe row is animating open
+		 */
+		onRowOpen: PropTypes.func,
+		/**
+		 * Called when a swipe row has animated open
+		 */
+		onRowDidOpen: PropTypes.func,
+		/**
+		 * Called when a swipe row is animating closed
+		 */
+		onRowClose: PropTypes.func,
+		/**
+		 * Called when a swipe row has animated closed
+		 */
+		onRowDidClose: PropTypes.func,
+		/**
+		 * Styles for the parent wrapper View of the SwipeRow
+		 */
+		swipeRowStyle: View.propTypes.style,
+		/**
+		 * Called when the ListView ref is set and passes a ref to the ListView
+		 * e.g. listViewRef={ ref => this._swipeListViewRef = ref }
+		 */
+		listViewRef: PropTypes.func,
+		/**
+		 * Should the first SwipeRow do a slide out preview to show that the list is swipeable
+		 */
+		previewFirstRow: PropTypes.bool,
+		/**
+		 * Should the specified rowId do a slide out preview to show that the list is swipeable
+		 * Note: This ID will be passed to this function to get the correct row index
+		 * https://facebook.github.io/react-native/docs/listviewdatasource.html#getrowidforflatindex
+		 */
+		previewRowIndex: PropTypes.number,
+		/**
+		 * Duration of the slide out preview animation (milliseconds)
+		 */
+		previewDuration: PropTypes.number,
+		/**
+		 * TranslateX value for the slide out preview animation
+		 * Default: 0.5 * props.rightOpenValue
+		 */
+		previewOpenValue: PropTypes.number,
+		/**
+		 * Friction for the open / close animation
+		 */
+		friction: PropTypes.number,
+		/**
+		 * Tension for the open / close animation
+		 */
+		tension: PropTypes.number,
+		/**
+		 * The dx value used to detect when a user has begun a swipe gesture
+		 */
+		directionalDistanceChangeThreshold: PropTypes.number,
+		/**
+		 * What % of the left/right openValue does the user need to swipe
+		 * past to trigger the row opening.
+		 */
+		swipeToOpenPercent: PropTypes.number,
+	};
+
+	static defaultProps = {
+		leftOpenValue: 0,
+		rightOpenValue: 0,
+		closeOnRowBeginSwipe: false,
+		closeOnScroll: true,
+		closeOnRowPress: true,
+		disableLeftSwipe: false,
+		disableRightSwipe: false,
+		recalculateHiddenLayout: false,
+		previewFirstRow: false,
+		directionalDistanceChangeThreshold: 2,
+		swipeToOpenPercent: 50
+	};
+
+
+
 	constructor(props){
 		super(props);
 		this._rows = {};
@@ -140,137 +278,7 @@ class SwipeListView extends Component {
 
 }
 
-SwipeListView.propTypes = {
-	/**
-	 * How to render a row. Should return a valid React Element.
-	 */
-	renderRow: PropTypes.func.isRequired,
-	/**
-	 * How to render a hidden row (renders behind the row). Should return a valid React Element.
-	 * This is required unless renderRow is passing a SwipeRow.
-	 */
-	renderHiddenRow: PropTypes.func,
-	/**
-	 * TranslateX value for opening the row to the left (positive number)
-	 */
-	leftOpenValue: PropTypes.number,
-	/**
-	 * TranslateX value for opening the row to the right (negative number)
-	 */
-	rightOpenValue: PropTypes.number,
-	/**
-	 * TranslateX value for stop the row to the left (positive number)
-	 */
-	stopLeftSwipe: PropTypes.number,
-	/**
-	 * TranslateX value for stop the row to the right (negative number)
-	 */
-	stopRightSwipe: PropTypes.number,
-	/**
-	 * Should open rows be closed when the listView begins scrolling
-	 */
-	closeOnScroll: PropTypes.bool,
-	/**
-	 * Should open rows be closed when a row is pressed
-	 */
-	closeOnRowPress: PropTypes.bool,
-	/**
-	 * Should open rows be closed when a row begins to swipe open
-	 */
-	closeOnRowBeginSwipe: PropTypes.bool,
-	/**
-	 * Disable ability to swipe rows left
-	 */
-	disableLeftSwipe: PropTypes.bool,
-	/**
-	 * Disable ability to swipe rows right
-	 */
-	disableRightSwipe: PropTypes.bool,
-	/**
-	 * Enable hidden row onLayout calculations to run always.
-	 *
-	 * By default, hidden row size calculations are only done on the first onLayout event
-	 * for performance reasons.
-	 * Passing ```true``` here will cause calculations to run on every onLayout event.
-	 * You may want to do this if your rows' sizes can change.
-	 * One case is a SwipeListView with rows of different heights and an options to delete rows.
-	 */
-	recalculateHiddenLayout: PropTypes.bool,
-	/**
-	 * Called when a swipe row is animating open
-	 */
-	onRowOpen: PropTypes.func,
-	/**
-	 * Called when a swipe row has animated open
-	 */
-	onRowDidOpen: PropTypes.func,
-	/**
-	 * Called when a swipe row is animating closed
-	 */
-	onRowClose: PropTypes.func,
-	/**
-	 * Called when a swipe row has animated closed
-	 */
-	onRowDidClose: PropTypes.func,
-	/**
-	 * Styles for the parent wrapper View of the SwipeRow
-	 */
-	swipeRowStyle: View.propTypes.style,
-	/**
-	 * Called when the ListView ref is set and passes a ref to the ListView
-	 * e.g. listViewRef={ ref => this._swipeListViewRef = ref }
-	 */
-	listViewRef: PropTypes.func,
-	/**
-	 * Should the first SwipeRow do a slide out preview to show that the list is swipeable
-	 */
-	previewFirstRow: PropTypes.bool,
-	/**
-	 * Should the specified rowId do a slide out preview to show that the list is swipeable
-	 * Note: This ID will be passed to this function to get the correct row index
-	 * https://facebook.github.io/react-native/docs/listviewdatasource.html#getrowidforflatindex
-	 */
-	previewRowIndex: PropTypes.number,
-	/**
-	 * Duration of the slide out preview animation (milliseconds)
-	 */
-	previewDuration: PropTypes.number,
-	/**
-	 * TranslateX value for the slide out preview animation
-	 * Default: 0.5 * props.rightOpenValue
-	 */
-	previewOpenValue: PropTypes.number,
-	/**
-	 * Friction for the open / close animation
-	 */
-	friction: PropTypes.number,
-	/**
-	 * Tension for the open / close animation
-	 */
-	tension: PropTypes.number,
-	/**
-	 * The dx value used to detect when a user has begun a swipe gesture
-	 */
-	directionalDistanceChangeThreshold: PropTypes.number,
-	/**
-	 * What % of the left/right openValue does the user need to swipe
-	 * past to trigger the row opening.
-	 */
-	swipeToOpenPercent: PropTypes.number,
-}
 
-SwipeListView.defaultProps = {
-	leftOpenValue: 0,
-	rightOpenValue: 0,
-	closeOnRowBeginSwipe: false,
-	closeOnScroll: true,
-	closeOnRowPress: true,
-	disableLeftSwipe: false,
-	disableRightSwipe: false,
-	recalculateHiddenLayout: false,
-	previewFirstRow: false,
-	directionalDistanceChangeThreshold: 2,
-	swipeToOpenPercent: 50
-}
+
 
 export default SwipeListView;
