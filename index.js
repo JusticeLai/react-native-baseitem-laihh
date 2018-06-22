@@ -23,6 +23,9 @@ import SwipeListView from './components/three/Swipe-ListView/SwipeListView';//�
 import SwipeRow from './components/three/Swipe-ListView/SwipeRow';//侧滑删除
 
 
+import indexTest from './indexTest';//侧滑删除
+
+
 
 
 import CommonStyle from './components/style/CommonStyle';
@@ -72,6 +75,7 @@ export {
     Swiper,//广告轮播
     SwipeListView,//侧滑删除
     SwipeRow,//侧滑删除
+    indexTest,
     // MessageView,
     // playSound,
 }
