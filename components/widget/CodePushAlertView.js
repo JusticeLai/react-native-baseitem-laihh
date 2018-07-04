@@ -85,7 +85,7 @@ export default class CodePushAlertView extends Component {
                     }}>
                         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                             <View style={{height: 50, justifyContent: 'center', alignItems: 'center'}}>
-                                <Text style={{fontSize: 20}}>{title}</Text>
+                                <Text style={{fontSize: 20}}>{title==''|| title==NaN || title== undefined ?'正在更新中.....':'更新大小'+parseFloat(title / 1024 / 1024).toFixed(2)+'Mb'}</Text>
                             </View>
                             {
 
