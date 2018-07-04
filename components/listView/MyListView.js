@@ -85,6 +85,12 @@ export default class MyListView extends Component {
                             })
                         }, 1000);
                     }
+
+                    this.setState({
+                        // refreshing: true,
+                        isHideListView: 'Refreshing',
+                    })
+
                     setTimeout(() => {
                         this.setState({
                             dataSource: dataArray,
