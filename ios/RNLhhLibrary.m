@@ -11,7 +11,7 @@ RCT_EXPORT_METHOD(_init:(NSDictionary *)indic){
 
  dispatch_async(dispatch_get_main_queue(), ^{
 
-            [self.bridge.eventDispatcher sendAppEventWithName:@"pickerEvent" body:["1"]];
+//            [self.bridge.eventDispatcher sendAppEventWithName:@"pickerEvent" body:["1"]];
     });
 
 }

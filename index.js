@@ -18,6 +18,8 @@ import CountdownView from './components/three/CountdownView';//定时器--短信
 
 import CountDownTimer from './components/three/CountDownReact';//时分秒...倒计时
 
+import StarRating from './components/three/react-native-start-rating/star-rating';//评分星星
+
 
 import BaseNavigationBar from './components/widget/BaseNavigationBar';//定时器
 import CodePushAlertView from './components/widget/CodePushAlertView';//定时器
@@ -81,6 +83,7 @@ export {
     SwipeRow,//侧滑删除
     indexTest,
     CountDownTimer,
+    StarRating,//评分星星
     // MessageView,
     // playSound,
 }
