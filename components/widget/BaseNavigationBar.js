@@ -38,7 +38,7 @@ export default class BaseNavigationBar extends Component {
 
 
 
-        let height = this.props.height ? this.props.height : Platform.OS == 'ios' ? 68 : 50;
+        let height = this.props.height ? this.props.height : Platform.OS == 'ios' ? 70 : 50;
 
         let editable = true;
 
@@ -51,7 +51,7 @@ export default class BaseNavigationBar extends Component {
 
         return (
             <View style={{height:height, backgroundColor: backgroundColor}}>
-                <View style={{height: Platform.OS == 'ios' ? 20 : 0, backgroundColor: backgroundColor}}/>
+                <View style={{height: Platform.OS == 'ios' ? 22 : 0, backgroundColor: backgroundColor}}/>
 
                 {this.renderContainView(type, backgroundColor, titleColor, titleFontSize, onLeftPress,onRightPress, SearchImage,ErrorImage, onChangeText,placeholder,editable)}
 
@@ -67,7 +67,7 @@ export default class BaseNavigationBar extends Component {
                     <StatusBar   backgroundColor={backgroundColor} barStyle="light-content"/>
                     <View style={{
                         flexDirection: 'row',
-                        height: 43+5,
+                        height: 43+7,
                         backgroundColor: backgroundColor,
                         alignItems: 'center',
                         justifyContent: 'space-between'
@@ -100,7 +100,7 @@ export default class BaseNavigationBar extends Component {
                     <StatusBar backgroundColor={backgroundColor} barStyle="light-content"/>
                     <View style={{
                         flexDirection: 'row',
-                        height: 43+5,
+                        height: 43+7,
                         backgroundColor: backgroundColor,
                         alignItems: 'center',
                         justifyContent: 'space-between'
@@ -118,6 +118,7 @@ export default class BaseNavigationBar extends Component {
                                               backgroundColor: 'transparent',
                                               paddingHorizontal: 10,
                                               flexDirection: 'row',
+                                              marginRight:5,
                                           }}>
                             <View
                                 style={{

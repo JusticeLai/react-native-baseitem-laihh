@@ -1,13 +1,13 @@
 import React, {
     Component,
-    PropTypes,
 } from 'react';
-
+import PropTypes from 'prop-types'
 import {
     StyleSheet,
     View,
     Text,
     Image,
+    ViewPropTypes
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -40,6 +40,9 @@ const styles = StyleSheet.create({
 
 class CountDown extends Component {
   static displayName = 'Simple countDown';
+
+
+
   static propTypes = {
     date: PropTypes.string,
     days: PropTypes.objectOf(PropTypes.string),
@@ -48,13 +51,15 @@ class CountDown extends Component {
     segs: PropTypes.string,
     onEnd: PropTypes.func,
 
-    containerStyle: View.propTypes.style,
-    daysStyle: View.propTypes.style,
-    hoursStyle: View.propTypes.style,
-    minsStyle: View.propTypes.style,
-    secsStyle: View.propTypes.style,
-    firstColonStyle: View.propTypes.style,
-    secondColonStyle: View.propTypes.style,
+
+
+    containerStyle: ViewPropTypes.style,
+    daysStyle: ViewPropTypes.style,
+    hoursStyle: ViewPropTypes.style,
+    minsStyle: ViewPropTypes.style,
+    secsStyle: ViewPropTypes.style,
+    firstColonStyle: ViewPropTypes.style,
+    secondColonStyle: ViewPropTypes.style,
 
   };
   static defaultProps = {
@@ -149,14 +154,14 @@ class CountDown extends Component {
       days = this.props.days.plural;
     }
     return (
-    //    <View style={styles.container}>
-    //      <Text style={styles.text}>{
-    //        ((countDown.days > 0) ? this.leadingZeros(countDown.days)+days:'')
-    //        +this.leadingZeros(countDown.hours)
-    //        +':'+this.leadingZeros(countDown.min)
-    //        +':'+this.leadingZeros(countDown.sec)}</Text>
-    //    </View>
-    //
+        //    <View style={styles.container}>
+        //      <Text style={styles.text}>{
+        //        ((countDown.days > 0) ? this.leadingZeros(countDown.days)+days:'')
+        //        +this.leadingZeros(countDown.hours)
+        //        +':'+this.leadingZeros(countDown.min)
+        //        +':'+this.leadingZeros(countDown.sec)}</Text>
+        //    </View>
+        //
         <View style={this.props.containerStyle}>
           { (countDown.days>0) ? <Text style={this.props.daysStyle}>{ this.leadingZeros(countDown.days)+days}</Text> : null}
           <Text style={this.props.hoursStyle}>{ this.leadingZeros(countDown.hours)}</Text>
