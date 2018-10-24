@@ -7,7 +7,6 @@ import {
     View,
     Text,
     Image,
-    ViewPropTypes
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -53,13 +52,13 @@ class CountDown extends Component {
 
 
 
-    containerStyle: ViewPropTypes.style,
-    daysStyle: ViewPropTypes.style,
-    hoursStyle: ViewPropTypes.style,
-    minsStyle: ViewPropTypes.style,
-    secsStyle: ViewPropTypes.style,
-    firstColonStyle: ViewPropTypes.style,
-    secondColonStyle: ViewPropTypes.style,
+    containerStyle: View.propTypes.style,
+    daysStyle: View.propTypes.style,
+    hoursStyle: View.propTypes.style,
+    minsStyle: View.propTypes.style,
+    secsStyle: View.propTypes.style,
+    firstColonStyle: View.propTypes.style,
+    secondColonStyle: View.propTypes.style,
 
   };
   static defaultProps = {
@@ -154,14 +153,14 @@ class CountDown extends Component {
       days = this.props.days.plural;
     }
     return (
-        //    <View style={styles.container}>
-        //      <Text style={styles.text}>{
-        //        ((countDown.days > 0) ? this.leadingZeros(countDown.days)+days:'')
-        //        +this.leadingZeros(countDown.hours)
-        //        +':'+this.leadingZeros(countDown.min)
-        //        +':'+this.leadingZeros(countDown.sec)}</Text>
-        //    </View>
-        //
+    //    <View style={styles.container}>
+    //      <Text style={styles.text}>{
+    //        ((countDown.days > 0) ? this.leadingZeros(countDown.days)+days:'')
+    //        +this.leadingZeros(countDown.hours)
+    //        +':'+this.leadingZeros(countDown.min)
+    //        +':'+this.leadingZeros(countDown.sec)}</Text>
+    //    </View>
+    //
         <View style={this.props.containerStyle}>
           { (countDown.days>0) ? <Text style={this.props.daysStyle}>{ this.leadingZeros(countDown.days)+days}</Text> : null}
           <Text style={this.props.hoursStyle}>{ this.leadingZeros(countDown.hours)}</Text>
