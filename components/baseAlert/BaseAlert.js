@@ -11,9 +11,9 @@ import {
     TouchableOpacity,
     InteractionManager,
     Keyboard,
-    ScrollView
+    ScrollView,
+    Dimensions
 } from 'react-native';
-import Dimensions from 'Dimensions'
 let {width, height} = Dimensions.get('window');
 import Modal from 'react-native-modalbox';
 
@@ -43,15 +43,29 @@ export default class BaseAlert extends Component {
     }
 
     showAlert(options) {
-        this.setState({
-            modalVisible: true,
-        })
+
+        let AlertType = this.props.AlertType ? this.props.AlertType : ""; //TextInput  //ImageAlert // PassWordAlert
+
+        if (AlertType == 'PassWordAlert') {
+            this.alertView.show();
+        } else {
+            this.setState({
+                modalVisible: true,
+            })
+        }
     }
 
     hiddenAlert() {
-        this.setState({
-            modalVisible: false
-        })
+
+        let AlertType = this.props.AlertType ? this.props.AlertType : ""; //TextInput  //ImageAlert // PassWordAlert
+
+        if (AlertType == 'PassWordAlert') {
+            this.alertView.hide();
+        } else {
+            this.setState({
+                modalVisible: false
+            })
+        }
     }
 
 
@@ -101,9 +115,14 @@ export default class BaseAlert extends Component {
 
 
         if (AlertType == 'PassWordAlert') {
-            return (
-                <Password isShowShop={true} maxLength={6}/>
-            )
+
+            // if(this.state.modalVisible == true){
+            //     return  <Password isShowShop={true} maxLength={6}/>
+            // }else{
+            //     return null
+            // }
+
+            return <Password ref={c => this.alertView = c} maxLength={6}/>
         }
 
         return (

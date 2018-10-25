@@ -17,7 +17,7 @@ import {
 } from 'react-native';
 
 
-export default class Password extends Component {
+export default class DailogAlert extends Component {
     // static propTypes = {
     //     style: View.propTypes.style,
     //     inputItemStyle: View.propTypes.style,

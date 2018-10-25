@@ -15,26 +15,10 @@ import {
     Easing,
     Dimensions
 } from 'react-native';
+import Modal from 'react-native-modalbox';
 
 
-export default class Password extends Component {
-    // static propTypes = {
-    //     style: View.propTypes.style,
-    //     inputItemStyle: View.propTypes.style,
-    //     iconStyle: View.propTypes.style,
-    //     maxLength: TextInput.propTypes.maxLength.isRequired,
-    //     onChange: PropTypes.func,
-    //     onEnd: PropTypes.func,
-    //     autoFocus: PropTypes.bool,
-    // };
-
-    static defaultProps = {
-        autoFocus: true,
-        onChange: () => {
-        },
-        onEnd: () => {
-        },
-    };
+export default class TextInputAlert extends Component {
 
 
     constructor(props) {
@@ -42,10 +26,7 @@ export default class Password extends Component {
 
         this.state = {
             isShowShop: props.isShowShop,
-            text: '',
-            fadeInOpacity: new Animated.Value(0),
-            rotation: new Animated.Value(0),
-            fontSize: new Animated.Value(0)
+
         };
     }
 
