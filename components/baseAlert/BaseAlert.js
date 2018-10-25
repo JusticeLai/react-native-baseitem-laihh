@@ -18,6 +18,10 @@ let {width, height} = Dimensions.get('window');
 import Modal from 'react-native-modalbox';
 
 import Password from './PWD';
+import TextInputAlert from './TextInputAlert';
+import DailogAlert from './DailogAlert';
+import ImageAlert from './ImageAlert';
+import CodePushAlert from './CodePushAlertView';
 
 
 export default class BaseAlert extends Component {
@@ -44,10 +48,16 @@ export default class BaseAlert extends Component {
 
     showAlert(options) {
 
-        let AlertType = this.props.AlertType ? this.props.AlertType : ""; //TextInput  //ImageAlert // PassWordAlert
+        let AlertType = this.props.AlertType ? this.props.AlertType : ""; //TextInputAlert  //ImageAlert // PassWordAlert //DailLogAlert
 
         if (AlertType == 'PassWordAlert') {
             this.alertView.show();
+        }else if(AlertType == 'TextInputAlert'){
+            this.alertView2.show();
+        } else if(AlertType == 'DailLogAlert'){
+            this.alertView3.show();
+        }  else if(AlertType == 'ImageAlert'){
+            this.alertView4.show();
         } else {
             this.setState({
                 modalVisible: true,
@@ -57,10 +67,16 @@ export default class BaseAlert extends Component {
 
     hiddenAlert() {
 
-        let AlertType = this.props.AlertType ? this.props.AlertType : ""; //TextInput  //ImageAlert // PassWordAlert
+        let AlertType = this.props.AlertType ? this.props.AlertType : ""; //TextInputAlert  //ImageAlert // PassWordAlert //DailLogAlert
 
         if (AlertType == 'PassWordAlert') {
             this.alertView.hide();
+        }else if(AlertType == 'TextInputAlert'){
+            this.alertView2.hide();
+        } else if(AlertType == 'DailLogAlert'){
+            this.alertView3.hide();
+        } else if(AlertType == 'ImageAlert'){
+            this.alertView4.hide();
         } else {
             this.setState({
                 modalVisible: false
@@ -109,21 +125,23 @@ export default class BaseAlert extends Component {
 
         let renderChildView = this.props.renderChildView ? this.props.renderChildView : null;
 
-        let AlertType = this.props.AlertType ? this.props.AlertType : ""; //TextInput  //ImageAlert // PassWordAlert
+        let AlertType = this.props.AlertType ? this.props.AlertType : ""; //TextInputAlert  //ImageAlert // PassWordAlert //DailLogAlert
 
         let imageURL = this.props.imageURL ? this.props.imageURL : "";
 
 
         if (AlertType == 'PassWordAlert') {
-
-            // if(this.state.modalVisible == true){
-            //     return  <Password isShowShop={true} maxLength={6}/>
-            // }else{
-            //     return null
-            // }
-
             return <Password ref={c => this.alertView = c} maxLength={6}/>
+        }else if (AlertType == 'TextInputAlert') {
+            return <TextInputAlert   ref={c => this.alertView2 = c} data={data} />
+        }else if (AlertType == 'DailLogAlert') {
+            return <DailogAlert   ref={c => this.alertView3 = c} data={data} />
+        }else if (AlertType == 'ImageAlert') {
+            return <ImageAlert imageURL ={imageURL}  ref={c => this.alertView4 = c} data={data} />
         }
+
+
+
 
         return (
             <Modal
@@ -428,7 +446,7 @@ export default class BaseAlert extends Component {
         )
     }
 
-    renderTitle(title) {
+    renderTitle (title) {
         return (
             <View style={{
                 height: 50,
@@ -441,7 +459,7 @@ export default class BaseAlert extends Component {
         )
     }
 
-    renderTitle2(title) {
+    renderTitle2 (title) {
         return (
             <View style={{
                 height: 50,
@@ -456,7 +474,7 @@ export default class BaseAlert extends Component {
     }
 
 
-    renderBtn(onBtnPress, leftTitle, rightTitle) {
+    renderBtn (onBtnPress, leftTitle, rightTitle) {
         return (
             <View style={{
                 height: 50,
@@ -499,7 +517,7 @@ export default class BaseAlert extends Component {
     }
 
 
-    renderPDW1(onChangeText, index, leftTitle, placeholder, secureTextEntry) {
+    renderPDW1 (onChangeText, index, leftTitle, placeholder, secureTextEntry) {
 
         return (
             <View style={{

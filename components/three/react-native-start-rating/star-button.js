@@ -1,40 +1,63 @@
-// React and react native imports
-import React, {
-  Component,
-} from 'react';
-import {
-  ViewPropTypes,
-  Image,
-} from 'react-native';
+import React, { Component } from 'react';
+import { Image, StyleSheet, ViewPropTypes } from 'react-native';
 import PropTypes from 'prop-types';
-import update from 'react-addons-update';
+import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 
 // Third party imports
 import Button from 'react-native-button';
 import EntypoIcons from 'react-native-vector-icons/Entypo';
 import EvilIconsIcons from 'react-native-vector-icons/EvilIcons';
+import FeatherIcons from 'react-native-vector-icons/Feather';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 import FoundationIcons from 'react-native-vector-icons/Foundation';
 import IoniconsIcons from 'react-native-vector-icons/Ionicons';
 import MaterialIconsIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIconsIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import OcticonsIcons from 'react-native-vector-icons/Octicons';
 import ZocialIcons from 'react-native-vector-icons/Zocial';
-import MaterialCommunityIconsIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import SimpleLineIconsIcons from 'react-native-vector-icons/SimpleLineIcons';
 
 const iconSets = {
   Entypo: EntypoIcons,
   EvilIcons: EvilIconsIcons,
+  Feather: FeatherIcons,
   FontAwesome: FontAwesomeIcons,
   Foundation: FoundationIcons,
   Ionicons: IoniconsIcons,
   MaterialIcons: MaterialIconsIcons,
+  MaterialCommunityIcons: MaterialCommunityIconsIcons,
   Octicons: OcticonsIcons,
   Zocial: ZocialIcons,
-  MaterialCommunityIcons: MaterialCommunityIconsIcons,
+  SimpleLineIcons: SimpleLineIconsIcons,
+};
+
+const propTypes = {
+  buttonStyle: ViewPropTypes.style,
+  disabled: PropTypes.bool.isRequired,
+  halfStarEnabled: PropTypes.bool.isRequired,
+  icoMoonJson: PropTypes.string,
+  iconSet: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  reversed: PropTypes.bool.isRequired,
+  starColor: PropTypes.string.isRequired,
+  starIconName: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.number,
+  ]).isRequired,
+  starSize: PropTypes.number.isRequired,
+  activeOpacity: PropTypes.number.isRequired,
+  starStyle: ViewPropTypes.style,
+  onStarButtonPress: PropTypes.func.isRequired,
+};
+
+const defaultProps = {
+  buttonStyle: {},
+  icoMoonJson: undefined,
+  starStyle: {},
 };
 
 class StarButton extends Component {
-
   constructor(props) {
     super(props);
 
@@ -43,10 +66,10 @@ class StarButton extends Component {
 
   onButtonPress(event) {
     const {
-      halfStarEnabled,
-      starSize,
-      rating,
-      onStarButtonPress,
+        halfStarEnabled,
+        starSize,
+        rating,
+        onStarButtonPress,
     } = this.props;
 
     let addition = 0;
@@ -59,38 +82,45 @@ class StarButton extends Component {
     onStarButtonPress(rating + addition);
   }
 
+  iconSetFromProps() {
+    const {
+        icoMoonJson,
+        iconSet,
+    } = this.props;
+    if (icoMoonJson) {
+      return createIconSetFromIcoMoon(icoMoonJson);
+    }
+
+    return iconSets[iconSet];
+  }
+
   renderIcon() {
     const {
-      iconSet,
-      starIconName,
-      starSize,
-      starColor,
-      starStyle,
-      reversed,
+        reversed,
+        starColor,
+        starIconName,
+        starSize,
+        starStyle,
     } = this.props;
 
-    const Icon = iconSets[iconSet];
+    const Icon = this.iconSetFromProps();
     let iconElement;
 
-    // To check if we need to reverse the star icon
-    const newStarStyle = update(starStyle, {
-      transform: {
-        $set: [
-          {
-            scaleX: reversed ? -1 : 1,
-          },
-        ],
-      },
-    });
+    const newStarStyle = {
+      transform: [{
+        scaleX: reversed ? -1 : 1,
+      }],
+      ...StyleSheet.flatten(starStyle),
+    };
 
     if (typeof starIconName === 'string') {
       iconElement = (
-        <Icon
-          name={starIconName}
-          size={starSize}
-          color={starColor}
-          style={newStarStyle}
-        />
+          <Icon
+              name={starIconName}
+              size={starSize}
+              color={starColor}
+              style={newStarStyle}
+          />
       );
     } else {
       const imageStyle = {
@@ -105,10 +135,10 @@ class StarButton extends Component {
       ];
 
       iconElement = (
-        <Image
-          source={starIconName}
-          style={iconStyles}
-        />
+          <Image
+              source={starIconName}
+              style={iconStyles}
+          />
       );
     }
 
@@ -117,45 +147,25 @@ class StarButton extends Component {
 
   render() {
     const {
-      disabled,
-      buttonStyle,
+        activeOpacity,
+        buttonStyle,
+        disabled,
     } = this.props;
 
     return (
-      <Button
-        activeOpacity={0.20}
-        disabled={disabled}
-        containerStyle={buttonStyle}
-        onPress={this.onButtonPress}
-      >
-        {this.renderIcon()}
-      </Button>
+        <Button
+            activeOpacity={activeOpacity}
+            disabled={disabled}
+            containerStyle={buttonStyle}
+            onPress={this.onButtonPress}
+        >
+          {this.renderIcon()}
+        </Button>
     );
   }
-
 }
 
-StarButton.propTypes = {
-  disabled: PropTypes.bool.isRequired,
-  rating: PropTypes.number.isRequired,
-  onStarButtonPress: PropTypes.func.isRequired,
-  iconSet: PropTypes.string.isRequired,
-  starSize: PropTypes.number.isRequired,
-  starIconName: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-    PropTypes.number,
-  ]).isRequired,
-  starColor: PropTypes.string.isRequired,
-  starStyle: ViewPropTypes.style,
-  buttonStyle: ViewPropTypes.style,
-  halfStarEnabled: PropTypes.bool.isRequired,
-  reversed: PropTypes.bool.isRequired,
-};
-
-StarButton.defaultProps = {
-  starStyle: {},
-  buttonStyle: {},
-};
+StarButton.propTypes = propTypes;
+StarButton.defaultProps = defaultProps;
 
 export default StarButton;
