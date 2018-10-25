@@ -29,6 +29,8 @@ import SwipeListView from './components/three/Swipe-ListView/SwipeListView';//�
 import SwipeRow from './components/three/Swipe-ListView/SwipeRow';//侧滑删除
 
 
+import BaseAlert from './components/baseAlert/BaseAlert';//对话框
+
 import indexTest from './indexTest';//侧滑删除
 
 
@@ -84,6 +86,7 @@ export {
     indexTest,
     CountDownTimer,
     StarRating,//评分星星
+    BaseAlert,
     // MessageView,
     // playSound,
 }
