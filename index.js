@@ -2,6 +2,7 @@ import SCBaseItemView from './components/baseItem/index';
 import RadioGroup from './components/baseItem/RadioGroup';
 import EasyListView from './components/listView/EasyListView';
 import MyListView from './components/listView/MyListView';
+import SimpleListView from './components/listView/SimpleListView';
 
 
 
@@ -87,6 +88,7 @@ export {
     CountDownTimer,
     StarRating,//评分星星
     BaseAlert,
+    SimpleListView
     // MessageView,
     // playSound,
 }

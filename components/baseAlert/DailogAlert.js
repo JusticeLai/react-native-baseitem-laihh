@@ -9,6 +9,7 @@ import {
     TouchableOpacity,
     InteractionManager,
     Platform,
+    Image,
     Text,
     Animated,
     Keyboard,
@@ -42,11 +43,11 @@ export default class DailogAlert extends Component {
     }
 
 
-    show () {
+    show() {
         this.setState({isShowShop: true})
     }
 
-    hide () {
+    hide() {
         this.setState({isShowShop: false});
     }
 
@@ -66,7 +67,7 @@ export default class DailogAlert extends Component {
         let onBtnPress = this.props.onBtnPress ? this.props.onBtnPress : ()=> {
         };
         let onCLosePress = this.props.onClosePress ? this.props.onClosePress : ()=> {
-            this.setState({text:'',isShowShop: false});
+            this.setState({text: '', isShowShop: false});
             Keyboard.dismiss();
         }
 
@@ -80,6 +81,7 @@ export default class DailogAlert extends Component {
         let showRightBtn = data.showRightBtn ? data.showRightBtn : true;
 
         let TextInputNum = data.TextInputNum ? data.TextInputNum : 2;
+        let type = data.type ? data.type : '';
         let BtnNum = data.BtnNum ? data.BtnNum : 2;
 
         let Title = data.Title ? data.Title : '请设置新的支付密码';
@@ -99,7 +101,6 @@ export default class DailogAlert extends Component {
         let AlertType = this.props.AlertType ? this.props.AlertType : ""; //TextInput  //ImageAlert // PassWordAlert
 
         let imageURL = this.props.imageURL ? this.props.imageURL : "";
-
 
 
         return (
@@ -141,6 +142,7 @@ export default class DailogAlert extends Component {
                         {
                             this.renderChildView(
                                 data,
+                                type,
                                 onBtnPress,
                                 onCLosePress,
                                 onChangeText,
@@ -166,7 +168,7 @@ export default class DailogAlert extends Component {
     }
 
 
-    renderChildView(data, onBtnPress, onCLosePress, onChangeText, showRightBtn, TextInputNum, Title,Title2,
+    renderChildView(data, type, onBtnPress, onCLosePress, onChangeText, showRightBtn, TextInputNum, Title, Title2,
                     LeftTitle1, RightPlaceholder1, LeftTitle2, RightPlaceholder2, BtnNum, CancleTitle, ComfireTitle) {
 
         let secureTextEntry = data.secureTextEntry ? data.secureTextEntry : true;
@@ -175,7 +177,9 @@ export default class DailogAlert extends Component {
             <View style={{flex: 1, justifyContent: 'space-between', alignItems: 'center', overflow: 'hidden'}}>
                 {this.renderRightBtn(showRightBtn, onCLosePress)}
                 {this.renderTitle(Title)}
-                {this.renderTitle2(Title2)}
+                {
+                    type == '' ? this.renderTitle2(Title2) : this.renderImage(type)
+                }
                 {
                     BtnNum == 2 ? this.renderBtn(onBtnPress, CancleTitle, ComfireTitle) : this.renderBtn(onBtnPress, '', ComfireTitle)
                 }
@@ -183,7 +187,7 @@ export default class DailogAlert extends Component {
         )
     }
 
-    renderRightBtn (showRightBtn, onCLosePress) {
+    renderRightBtn(showRightBtn, onCLosePress) {
         return (
             showRightBtn == true ? <TouchableOpacity style={{
                 height: 30,
@@ -206,7 +210,7 @@ export default class DailogAlert extends Component {
         )
     }
 
-    renderTitle (title) {
+    renderTitle(title) {
         return (
             <View style={{
                 height: 50,
@@ -218,7 +222,8 @@ export default class DailogAlert extends Component {
             </View>
         )
     }
-    renderTitle2 (title) {
+
+    renderTitle2(title) {
         return (
             <View style={{
                 height: 50,
@@ -232,14 +237,31 @@ export default class DailogAlert extends Component {
         )
     }
 
+    renderImage(type) {
+
+        let url = 'green'
+        if(type == 'success'){
+            url = 'green'
+        }else if(type == 'fail'){
+            url = 'red'
+        }
+        return (
+            <View style={{flex: 1}}>
+                <Image
+                    style={{width: 100, height: 100, backgroundColor: url}}
+                />
+            </View>
+
+        )
+    }
 
 
-    renderBtn (onBtnPress, leftTitle, rightTitle) {
+    renderBtn(onBtnPress, leftTitle, rightTitle) {
 
         return (
             <View style={{
                 height: 50,
-                width:  Dimensions.get('window').width,
+                width: Dimensions.get('window').width,
                 justifyContent: 'center',
                 alignItems: 'center',
                 borderTopColor: 'rgb(222,222,222)',
@@ -250,7 +272,7 @@ export default class DailogAlert extends Component {
                 {
                     leftTitle != '' ? <TouchableOpacity style={{
                         height: 50,
-                        width:  Dimensions.get('window').width / 2,
+                        width: Dimensions.get('window').width / 2,
                         justifyContent: 'center',
                         alignItems: 'center',
                         borderRightColor: 'rgb(222,222,222)',
@@ -265,7 +287,7 @@ export default class DailogAlert extends Component {
 
                 <TouchableOpacity style={{
                     height: 50,
-                    width:  Dimensions.get('window').width / 2,
+                    width: Dimensions.get('window').width / 2,
                     justifyContent: 'center',
                     alignItems: 'center',
                 }} activeOpacity={1} onPress={()=> {
@@ -276,8 +298,6 @@ export default class DailogAlert extends Component {
             </View>
         )
     }
-
-
 
 
 }
