@@ -35,6 +35,7 @@ import BaseAlert from './components/baseAlert/BaseAlert';//对话框
 import indexTest from './indexTest';//侧滑删除
 
 
+import AddCutCoutView from './components/widget/AddCutCoutView';//数字加减
 
 
 import CommonStyle from './components/style/CommonStyle';
@@ -88,7 +89,8 @@ export {
     CountDownTimer,
     StarRating,//评分星星
     BaseAlert,
-    SimpleListView
+    SimpleListView,
+    AddCutCoutView
     // MessageView,
     // playSound,
 }
