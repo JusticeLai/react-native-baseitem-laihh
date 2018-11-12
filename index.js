@@ -41,6 +41,8 @@ import AddCutCoutView from './components/widget/AddCutCoutView';//数字加减
 import CommonStyle from './components/style/CommonStyle';
 import Utils from './components/uitls/Utils';
 import DBUtils from './components/uitls/DBUtils';
+import ImageUtils from './components/uitls/ImageUtils';
+
 // import {playSound} from './index2';
 
 let height = Utils.getWindow().height;
@@ -90,7 +92,8 @@ export {
     StarRating,//评分星星
     BaseAlert,
     SimpleListView,
-    AddCutCoutView
+    AddCutCoutView,
+    ImageUtils
     // MessageView,
     // playSound,
 }
