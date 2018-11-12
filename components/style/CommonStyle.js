@@ -22,7 +22,7 @@ const colors = {
     UNDER_LINE_COLOR:'#efeff4',   //下划线,超浅色
     BLACK_COLOR:'black',  //黑色
     WHITE_COLOR:'#FFF',  //白色
-    PAGE_BG_COLOR:'rgb(235,235,241)',  //页面背景色
+    PAGE_BG_COLOR:'rgb(245,251,255)',  //页面背景色
     RED_COLOR:'#ff3c00',  //红色
     MAIN_COLOR_BLUE:'rgb(65,130,248)',  //主颜色---蓝色
     MAIN_COLOR_YELLOW:'rgb(247,180,15)',  //主颜色---黄色

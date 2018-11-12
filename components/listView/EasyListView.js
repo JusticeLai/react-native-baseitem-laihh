@@ -322,7 +322,7 @@ export default class EasyListView extends Component {
                         height: 110,
                         justifyContent: 'center',
                         alignItems: 'center',
-                        backgroundColor: '#AAAAAA',
+                        backgroundColor: 'rgb(245,251,255)',
                         borderRadius: 5
                     }}>
                         <ActivityIndicator color='white' size='large'/>
@@ -375,7 +375,7 @@ export default class EasyListView extends Component {
             );
 
         } else if (isHideListView == 'RefreshEmpty') {
-            let backgroundColorX = this.props.backgroundColor ? this.props.backgroundColor : 'rgb(222,222,222)'
+            let backgroundColorX = this.props.backgroundColor ? this.props.backgroundColor :'rgb(245,251,255)'
             let imageURL = require('../../images/withOut.png')
             let tip = this.props.EmptyStr ? this.props.EmptyStr : '暂无更多,轻触重新请求';
             return (
@@ -398,7 +398,7 @@ export default class EasyListView extends Component {
                 </TouchableOpacity>
             )
         } else if (isHideListView == 'RefreshError') {
-            let backgroundColorX = this.props.backgroundColor ? this.props.backgroundColor : 'rgb(222,222,222)'
+            let backgroundColorX = this.props.backgroundColor ? this.props.backgroundColor : 'rgb(245,251,255)'
             let imageURL = require('../../images/errorTip.png')
             let tip = this.props.ErrorStr ? this.props.ErrorStr : '加载异常,轻触重新请求';
             return (

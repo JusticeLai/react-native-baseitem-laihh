@@ -233,7 +233,7 @@ export default class MyListView extends Component {
                         keyExtractor={(item, index)=>item.key = index}
                         onEndReachedThreshold={1}
                         onEndReached={this.props.LoreMore}
-                        onScrollEndDrag={this.handleEndDrag}
+                        onScrollEndDrag={this.props.onScrollEndDrag ? this.handleEndDrag2: this.handleEndDrag}
 
                         data={this.state.dataSource}/>
                     {this.state.top != '' ?
@@ -384,6 +384,12 @@ export default class MyListView extends Component {
         console.log(page);
         console.log(height);
     }
+
+    handleEndDrag2 = (event, _scrollView)=> {
+        this.handleEndDrag(event, _scrollView)
+        this.props.onScrollEndDrag(event, _scrollView)
+    }
+
 
 
 }
