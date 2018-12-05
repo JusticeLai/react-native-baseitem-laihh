@@ -34,7 +34,14 @@ const styles = StyleSheet.create({
   //冒号
   defaultColon: {
     fontSize: 12, color: 'rgba(85, 85, 85, 1)'
-  }
+  },
+  daysStyle:  {fontSize:12},
+  hoursStyle: {fontSize:12},
+  minsStyle:  {fontSize:12},
+  secsStyle: {fontSize:12},
+  firstColonStyle: {fontSize:12},
+  secondColonStyle: {fontSize:12},
+
 });
 
 class CountDown extends Component {
@@ -53,12 +60,12 @@ class CountDown extends Component {
 
 
     containerStyle: View.propTypes.style,
-    daysStyle: View.propTypes.style,
-    hoursStyle: View.propTypes.style,
-    minsStyle: View.propTypes.style,
-    secsStyle: View.propTypes.style,
-    firstColonStyle: View.propTypes.style,
-    secondColonStyle: View.propTypes.style,
+    // daysStyle: View.propTypes.style,
+    // hoursStyle: View.propTypes.style,
+    // minsStyle: View.propTypes.style,
+    // secsStyle: View.propTypes.style,
+    // firstColonStyle: View.propTypes.style,
+    // secondColonStyle: View.propTypes.style,
 
   };
   static defaultProps = {
@@ -73,12 +80,12 @@ class CountDown extends Component {
     onEnd: () => {},
 
     containerStyle: styles.container,//container 的style
-    daysStyle: styles.defaultTime,//天数 字体的style
-    hoursStyle: styles.defaultTime,//小时 字体的style
-    minsStyle: styles.defaultTime,//分钟 字体的style
-    secsStyle: styles.defaultTime,//秒数 字体的style
-    firstColonStyle: styles.defaultColon,//从左向右 第一个冒号 字体的style
-    secondColonStyle: styles.defaultColon,//从左向右 第2个冒号 字体的style
+    // daysStyle: styles.defaultTime,//天数 字体的style
+    // hoursStyle: styles.defaultTime,//小时 字体的style
+    // minsStyle: styles.defaultTime,//分钟 字体的style
+    // secsStyle: styles.defaultTime,//秒数 字体的style
+    // firstColonStyle: styles.defaultColon,//从左向右 第一个冒号 字体的style
+    // secondColonStyle: styles.defaultColon,//从左向右 第2个冒号 字体的style
 
   };
   state = {
@@ -153,21 +160,21 @@ class CountDown extends Component {
       days = this.props.days.plural;
     }
     return (
-    //    <View style={styles.container}>
-    //      <Text style={styles.text}>{
-    //        ((countDown.days > 0) ? this.leadingZeros(countDown.days)+days:'')
-    //        +this.leadingZeros(countDown.hours)
-    //        +':'+this.leadingZeros(countDown.min)
-    //        +':'+this.leadingZeros(countDown.sec)}</Text>
-    //    </View>
-    //
+        //    <View style={styles.container}>
+        //      <Text style={styles.text}>{
+        //        ((countDown.days > 0) ? this.leadingZeros(countDown.days)+days:'')
+        //        +this.leadingZeros(countDown.hours)
+        //        +':'+this.leadingZeros(countDown.min)
+        //        +':'+this.leadingZeros(countDown.sec)}</Text>
+        //    </View>
+        //
         <View style={this.props.containerStyle}>
-          { (countDown.days>0) ? <Text style={this.props.daysStyle}>{ this.leadingZeros(countDown.days)+days}</Text> : null}
-          <Text style={this.props.hoursStyle}>{ this.leadingZeros(countDown.hours)}</Text>
-          <Text style={ this.props.firstColonStyle}>:</Text>
-          <Text style={this.props.minsStyle}>{this.leadingZeros(countDown.min)}</Text>
-          <Text style={this.props.secondColonStyle}>:</Text>
-          <Text style={this.props.secsStyle}>{this.leadingZeros(countDown.sec)}</Text>
+          { (countDown.days>0) ? <Text style={styles.daysStyle}>{ this.leadingZeros(countDown.days)+days}</Text> : null}
+          <Text style={styles.hoursStyle}>{ this.leadingZeros(countDown.hours)}</Text>
+          <Text style={styles.firstColonStyle}>:</Text>
+          <Text style={styles.minsStyle}>{this.leadingZeros(countDown.min)}</Text>
+          <Text style={styles.secondColonStyle}>:</Text>
+          <Text style={styles.secsStyle}>{this.leadingZeros(countDown.sec)}</Text>
         </View>
 
 
@@ -190,5 +197,6 @@ class CountDown extends Component {
     return num_;
   }
 };
+
 
 export default CountDown;

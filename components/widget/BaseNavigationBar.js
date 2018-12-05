@@ -108,7 +108,7 @@ export default class BaseNavigationBar extends Component {
                             {this.renderLeftView(this.props.leftArray, onLeftPress)}
                         </View>
 
-                        <TouchableOpacity activeOpacity={1} onPress={onChangeText}
+                        <TouchableOpacity activeOpacity={1}
                                           style={{
                                               flex: 1,
                                               height: 43,
@@ -130,9 +130,8 @@ export default class BaseNavigationBar extends Component {
                                     bottom: 5,
                                     position: 'absolute'
                                 }}/>
-                            <Image style={{width: 18, height: 18, marginHorizontal: 5}}  resizeMode={'contain'} source={SearchImage}/>
                             <TextInput
-                                style={{fontSize: 14, flex: 1, backgroundColor: 'transparent', paddingVertical: 5,}}
+                                style={{fontSize: 14, flex: 1, backgroundColor: 'transparent', paddingVertical: 5,paddingLeft:10}}
                                 returnKeyType="search"
                                 ref={'TextInput'}
                                 clearButtonMode={'while-editing'}
@@ -150,7 +149,9 @@ export default class BaseNavigationBar extends Component {
                                     </TouchableOpacity>
                                     : null
                             }
-
+                            <TouchableOpacity onPress={this.props.onSearchPress? this.props.onSearchPress:()=>{}}>
+                                <Image style={{width: 18, height: 18, marginHorizontal: 5}}  resizeMode={'contain'} source={SearchImage}/>
+                            </TouchableOpacity>
                         </TouchableOpacity>
 
                         <View style={{flexDirection: 'row', width: rightWidth, justifyContent: 'flex-end'}}>

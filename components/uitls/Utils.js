@@ -13,7 +13,7 @@ import DBUtils from './DBUtils';
 let instance = null;
 
 
-export default class Utils  {
+export default class Utils {
 
 
     // constructor(props) {
@@ -29,9 +29,8 @@ export default class Utils  {
     };
 
 
-
     //吐司
-    static Toast = (toast,time) => {
+    static Toast = (toast, time) => {
 
         // Toast.show(
         //     toast,
@@ -48,9 +47,8 @@ export default class Utils  {
     };
 
 
-
     //提示框
-    static Alert = (title,title2, cancleTitle, comfireTitle, cancleOnPress, comfireOnPress) => {
+    static Alert = (title, title2, cancleTitle, comfireTitle, cancleOnPress, comfireOnPress) => {
         Alert.alert(
             title,
             title2,
@@ -72,7 +70,7 @@ export default class Utils  {
         let ret2 = ret.toISOString().substr(0, ret.toISOString().length - 5).replace('T', ' ');
 
         if (length) {
-            return this.SubStr(ret2,length);
+            return this.SubStr(ret2, length);
         } else {
             return ret2;
         }
@@ -121,7 +119,7 @@ export default class Utils  {
         return dictX;
     }
 
-    test(){
+    test() {
         let shopCarArray = [
             {tite: '商品1', productID: 1, ischecked: false},
             {tite: '商品2', productID: 2, ischecked: false}]
@@ -149,6 +147,72 @@ export default class Utils  {
     static  getDBUtils() {
         return DBUtils.getDBUtils()
     }
+
+
+    //获取支付类型
+    static getPayTypeStr(typeStr) {
+        let array = [
+            {typeStr: '-2', title: '积分兑换'},
+            {typeStr: '-1', title: ''},
+            {typeStr: '0', title: '还没付款'},
+            {typeStr: 'wx_pub', title: '微信公众号支付'},
+            {typeStr: 'wx', title: 'app微信支付'},
+            {typeStr: 'bfb_pub', title: '百度钱包'},
+            {typeStr: '31', title: '到付'},
+            {typeStr: 'wx_pub_qr', title: '微信扫码支付'},
+            {typeStr: 'alipay', title: '支付宝支付'},
+            {typeStr: 'WeixinBERL', title: '微信公众号支付'},
+            {typeStr: 'AlipayCS', title: '支付宝支付'},
+            {typeStr: 'Cash', title: '现金支付'},
+            {typeStr: 'AlipayPAZH', title: '支付宝支付'},
+            {typeStr: 'Weixin', title: '微信支付'},
+        ];
+
+        let str = '';
+        for (let i = 0; i < array.length; i++) {
+            let dict = array[i];
+            if (dict.typeStr == typeStr) {
+                str = dict.title;
+            }
+
+        }
+        return str;
+
+    }
+
+
+    //格式化数字,加0,3位加逗号
+    static formatNum(str) {
+        var newStr = "";
+        var count = 0;
+        // 当数字是整数
+        if (str.indexOf(".") == -1) {
+            for (var i = str.length - 1; i >= 0; i--) {
+                if (count % 3 == 0 && count != 0) {
+                    newStr = str.charAt(i) + "," + newStr;
+                } else {
+                    newStr = str.charAt(i) + newStr;
+                }
+                count++;
+            }
+            str = newStr + ".00"; //自动补小数点后两位
+            return str;
+        }
+        // 当数字带有小数
+        else {
+            for (var i = str.indexOf(".") - 1; i >= 0; i--) {
+                if (count % 3 == 0 && count != 0) {
+                    newStr = str.charAt(i) + "," + newStr;
+                } else {
+                    newStr = str.charAt(i) + newStr; //逐个字符相接起来
+                }
+                count++;
+            }
+            str = newStr + (str + "00").substr((str + "00").indexOf("."), 3);
+            return str;
+        }
+    }
+
 
 }
 
