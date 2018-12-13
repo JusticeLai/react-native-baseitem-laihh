@@ -191,7 +191,7 @@ export default class SimpleListView extends Component {
                 <View style={{flex: 1}}>
                     <FlatList
                         {...this.props}
-                        contentContainerStyle={[{backgroundColor: 'rgb(250,250,250)'}, this.props.style]}
+                        contentContainerStyle={[{backgroundColor: 'rgb(245,251,255)'}, this.props.style]}
                         removeClippedSubviews={this.props.removeClippedSubviews ? this.props.removeClippedSubviews : false}
                         enableEmptySections={true}
                         ref={(flatList)=>this._flatList = flatList}
@@ -234,7 +234,7 @@ export default class SimpleListView extends Component {
                 </View>
             )
         } else if (isHideListView == 'RefreshEmpty') {
-            let backgroundColorX = this.props.backgroundColor ? this.props.backgroundColor : 'rgb(235,235,241)'
+            let backgroundColorX = this.props.backgroundColor ? this.props.backgroundColor : 'rgb(245,251,255)'
             let imageURL = require('../../images/withOut.png')
             let tip = this.props.EmptyStr ? this.props.EmptyStr : '暂无更多,轻触重新请求';
             return (
@@ -257,7 +257,7 @@ export default class SimpleListView extends Component {
                 </TouchableOpacity>
             )
         } else if (isHideListView == 'RefreshError') {
-            let backgroundColorX = this.props.backgroundColor ? this.props.backgroundColor : 'rgb(235,235,241)'
+            let backgroundColorX = this.props.backgroundColor ? this.props.backgroundColor :'rgb(245,251,255)'
             let imageURL = require('../../images/errorTip.png')
             let tip = this.props.ErrorStr ? this.props.ErrorStr : '加载异常,轻触重新请求';
             return (

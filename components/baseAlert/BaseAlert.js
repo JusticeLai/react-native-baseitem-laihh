@@ -19,6 +19,7 @@ import Modal from 'react-native-modalbox';
 
 import Password from './PWD';
 import TextInputAlert from './TextInputAlert';
+import CheckBoxTextInputAlert from './CheckBoxTextInputAlert';
 import DailogAlert from './DailogAlert';
 import ImageAlert from './ImageAlert';
 import CodePushAlert from './CodePushAlertView';
@@ -48,16 +49,18 @@ export default class BaseAlert extends Component {
 
     showAlert(options) {
 
-        let AlertType = this.props.AlertType ? this.props.AlertType : ""; //TextInputAlert  //ImageAlert // PassWordAlert //DailLogAlert
+        let AlertType = this.props.AlertType ? this.props.AlertType : ""; //TextInputAlert  //ImageAlert // PassWordAlert //DailLogAlert//CheckBoxTextInputAlert
 
         if (AlertType == 'PassWordAlert') {
             this.alertView.show();
-        }else if(AlertType == 'TextInputAlert'){
+        } else if (AlertType == 'TextInputAlert') {
             this.alertView2.show();
-        } else if(AlertType == 'DailLogAlert'){
+        } else if (AlertType == 'CheckBoxTextInputAlert') {
             this.alertView3.show();
-        }  else if(AlertType == 'ImageAlert'){
+        } else if (AlertType == 'DailLogAlert') {
             this.alertView4.show();
+        } else if (AlertType == 'ImageAlert') {
+            this.alertView5.show();
         } else {
             this.setState({
                 modalVisible: true,
@@ -65,23 +68,34 @@ export default class BaseAlert extends Component {
         }
     }
 
+    show(options) {
+        this.showAlert(options)
+    }
+
     hiddenAlert() {
 
-        let AlertType = this.props.AlertType ? this.props.AlertType : ""; //TextInputAlert  //ImageAlert // PassWordAlert //DailLogAlert
+        let AlertType = this.props.AlertType ? this.props.AlertType : ""; //TextInputAlert  //ImageAlert // PassWordAlert //DailLogAlert//CheckBoxTextInputAlert
 
         if (AlertType == 'PassWordAlert') {
             this.alertView.hide();
-        }else if(AlertType == 'TextInputAlert'){
+        } else if (AlertType == 'TextInputAlert') {
             this.alertView2.hide();
-        } else if(AlertType == 'DailLogAlert'){
+        } else if (AlertType == 'CheckBoxTextInputAlert') {
             this.alertView3.hide();
-        } else if(AlertType == 'ImageAlert'){
+        } else if (AlertType == 'DailLogAlert') {
             this.alertView4.hide();
+        } else if (AlertType == 'ImageAlert') {
+            this.alertView5.hide();
         } else {
             this.setState({
                 modalVisible: false
             })
         }
+    }
+
+
+    hide() {
+        this.hiddenAlert()
     }
 
 
@@ -132,15 +146,16 @@ export default class BaseAlert extends Component {
 
         if (AlertType == 'PassWordAlert') {
             return <Password ref={c => this.alertView = c} maxLength={6}/>
-        }else if (AlertType == 'TextInputAlert') {
-            return <TextInputAlert   ref={c => this.alertView2 = c} data={data} />
-        }else if (AlertType == 'DailLogAlert') {
-            return <DailogAlert   ref={c => this.alertView3 = c} data={data} />
-        }else if (AlertType == 'ImageAlert') {
-            return <ImageAlert imageURL ={imageURL}  ref={c => this.alertView4 = c} data={data} />
+        } else if (AlertType == 'TextInputAlert') {
+            return <TextInputAlert ref={c => this.alertView2 = c} data={data}/>
+        } else if (AlertType == 'CheckBoxTextInputAlert') {
+            return <CheckBoxTextInputAlert ref={c => this.alertView3 = c} data={data}
+                                           onBtnPress={this.props.onBtnPress}/>
+        } else if (AlertType == 'DailLogAlert') {
+            return <DailogAlert ref={c => this.alertView4 = c} data={data}/>
+        } else if (AlertType == 'ImageAlert') {
+            return <ImageAlert imageURL={imageURL} ref={c => this.alertView5 = c} data={data}/>
         }
-
-
 
 
         return (
@@ -446,7 +461,7 @@ export default class BaseAlert extends Component {
         )
     }
 
-    renderTitle (title) {
+    renderTitle(title) {
         return (
             <View style={{
                 height: 50,
@@ -459,7 +474,7 @@ export default class BaseAlert extends Component {
         )
     }
 
-    renderTitle2 (title) {
+    renderTitle2(title) {
         return (
             <View style={{
                 height: 50,
@@ -474,7 +489,7 @@ export default class BaseAlert extends Component {
     }
 
 
-    renderBtn (onBtnPress, leftTitle, rightTitle) {
+    renderBtn(onBtnPress, leftTitle, rightTitle) {
         return (
             <View style={{
                 height: 50,
@@ -517,7 +532,7 @@ export default class BaseAlert extends Component {
     }
 
 
-    renderPDW1 (onChangeText, index, leftTitle, placeholder, secureTextEntry) {
+    renderPDW1(onChangeText, index, leftTitle, placeholder, secureTextEntry) {
 
         return (
             <View style={{

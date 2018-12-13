@@ -41,7 +41,12 @@ export default class ImageUtils extends Component {
             return require('../../images/common/zhekou.png')
         } else if (imageNmae == 'buygive') {
             return require('../../images/common/buygive.png')
+        }else if (imageNmae == 'withOut') {
+            return require('../../images/withOut.png')
+        }else if (imageNmae == 'errorTip') {
+            return require('../../images/errorTip.png')
         }
+
 
 
 
