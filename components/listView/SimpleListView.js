@@ -60,7 +60,6 @@ export default class SimpleListView extends Component {
 
 
     ReFresh(isReFresh, dataArray) {
-
         if (isReFresh == 'Refreshing') {
             this.setState({
                 refreshing: true,
@@ -78,7 +77,8 @@ export default class SimpleListView extends Component {
                     }, 1000);
                 }
                 this.setState({
-                    // refreshing: true,
+                    refreshing: true,
+                    dataSource: [],
                     isHideListView: 'Refreshing',
                 })
                 setTimeout(() => {
@@ -103,13 +103,18 @@ export default class SimpleListView extends Component {
                 refreshing: false,
             })
             // console.warn('刷新异常');
+        }else if (isReFresh == 'RefreshEmpty') {
+            this.setState({
+                isHideListView: 'RefreshEmpty',
+                refreshing: false,
+            })
+            // console.warn('刷新异常');
         }
 
     }
 
 
     LoreMore(isLoreMore, dataArray) {
-
 
         if (this.responseData.length < 10) {
             this.setState({
@@ -124,7 +129,7 @@ export default class SimpleListView extends Component {
             })
             // console.warn('加载中');
         } else if (isLoreMore == 'LoreMorehaveData') {
-            // console.warn('有数据');
+            console.warn('有数据');
 
 
             this.responseData = this.responseData.concat(dataArray);

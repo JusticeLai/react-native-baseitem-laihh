@@ -182,7 +182,7 @@ export default class Utils {
 
 
     //格式化数字,加0,3位加逗号
-    static formatNum(str) {
+    static formatNum(str,isHaveDot) {
         var newStr = "";
         var count = 0;
         // 当数字是整数
@@ -195,7 +195,13 @@ export default class Utils {
                 }
                 count++;
             }
-            str = newStr + ".00"; //自动补小数点后两位
+
+            if(isHaveDot == false){
+                str = newStr
+            }else{
+                str = newStr + ".00"; //自动补小数点后两位
+            }
+
             return str;
         }
         // 当数字带有小数

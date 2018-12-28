@@ -108,17 +108,17 @@ export default class BaseNavigationBar extends Component {
                             {this.renderLeftView(this.props.leftArray, onLeftPress)}
                         </View>
 
-                        <TouchableOpacity activeOpacity={1}
-                                          style={{
-                                              flex: 1,
-                                              height: 43,
-                                              alignItems: 'center',
-                                              justifyContent: 'flex-start',
-                                              backgroundColor: 'transparent',
-                                              paddingHorizontal: 10,
-                                              flexDirection: 'row',
-                                              marginRight:5,
-                                          }}>
+                        <TouchableOpacity  onPress={this.props.onSearchPress? this.props.onSearchPress:()=>{}}
+                                           style={{
+                                               flex: 1,
+                                               height: 43,
+                                               alignItems: 'center',
+                                               justifyContent: 'flex-start',
+                                               backgroundColor: 'transparent',
+                                               paddingHorizontal: 10,
+                                               flexDirection: 'row',
+                                               marginRight:5
+                                           }}>
                             <View
                                 style={{
                                     height: 32,
@@ -130,15 +130,20 @@ export default class BaseNavigationBar extends Component {
                                     bottom: 5,
                                     position: 'absolute'
                                 }}/>
-                            <TextInput
-                                style={{fontSize: 14, flex: 1, backgroundColor: 'transparent', paddingVertical: 5,paddingLeft:10}}
-                                returnKeyType="search"
-                                ref={'TextInput'}
-                                clearButtonMode={'while-editing'}
-                                underlineColorAndroid={'transparent'}
-                                onChangeText={onChangeText}
-                                editable={editable}
-                                placeholder={placeholder}/>
+
+                            {
+                                editable == false ? <Text style={{fontSize: 14, color:'gray',flex: 1, backgroundColor: 'transparent', paddingVertical: 5,paddingLeft:10}}>{placeholder}</Text> : <TextInput
+                                    style={{fontSize: 14, flex: 1, backgroundColor: 'transparent', paddingVertical: 5,paddingLeft:10}}
+                                    returnKeyType="search"
+                                    ref={'TextInput'}
+                                    clearButtonMode={'while-editing'}
+                                    underlineColorAndroid={'transparent'}
+                                    onChangeText={onChangeText}
+                                    editable={editable}
+                                    placeholder={placeholder}/>
+
+                            }
+
                             {
                                 Platform.OS === 'android' ?
                                     <TouchableOpacity activeOpacity={1} onPress={()=> {
@@ -149,6 +154,8 @@ export default class BaseNavigationBar extends Component {
                                     </TouchableOpacity>
                                     : null
                             }
+
+
                             <TouchableOpacity onPress={this.props.onSearchPress? this.props.onSearchPress:()=>{}}>
                                 <Image style={{width: 18, height: 18, marginHorizontal: 5}}  resizeMode={'contain'} source={SearchImage}/>
                             </TouchableOpacity>
@@ -163,6 +170,8 @@ export default class BaseNavigationBar extends Component {
             )
         }
     }
+
+
 
 
     renderLeftView = (leftArray, onLeftPress) => {
