@@ -60,21 +60,25 @@ export default class Utils {
     };
 
 
+
     static getTimeStrWithStamp(startTimeStamp, length) {
-        //服务器时间戳10位, 客户端时间戳13位
-        if (startTimeStamp < 100000000000) {
-            startTimeStamp *= 1000;
-        }
-        // let offset = now.getTimezoneOffset();
-        let ret = new Date(startTimeStamp - new Date().getTimezoneOffset() * 60000);
-        let ret2 = ret.toISOString().substr(0, ret.toISOString().length - 5).replace('T', ' ');
+        if(startTimeStamp){
+            //服务器时间戳10位, 客户端时间戳13位
+            if (startTimeStamp < 100000000000) {
+                startTimeStamp *= 1000;
+            }
+            // let offset = now.getTimezoneOffset();
+            let ret = new Date(startTimeStamp - new Date().getTimezoneOffset() * 60000);
+            let ret2 = ret.toISOString().substr(0, ret.toISOString().length - 5).replace('T', ' ');
 
-        if (length) {
-            return this.SubStr(ret2, length);
-        } else {
-            return ret2;
+            if (length) {
+                return this.SubStr(ret2, length);
+            } else {
+                return ret2;
+            }
+        }else{
+            return ""
         }
-
 
     }
 

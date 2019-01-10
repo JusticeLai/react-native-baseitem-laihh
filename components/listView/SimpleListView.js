@@ -10,7 +10,8 @@ import {
     FlatList,
     RefreshControl,
     TouchableOpacity,
-    ActivityIndicator
+    ActivityIndicator,
+    Platform
 } from 'react-native'
 
 let {width, height} = Dimensions.get('window');
@@ -69,7 +70,7 @@ export default class SimpleListView extends Component {
         } else if (isReFresh == 'RefreshHaveData') {
             this.responseData = dataArray
             if (this.responseData.length > 0) {
-                if (this.responseData.length < 10) {
+                if (this.responseData.length <= 10) {
                     setTimeout(() => {
                         this.setState({
                             isLoreMoreing: LoreMoreEmpty,
@@ -81,13 +82,25 @@ export default class SimpleListView extends Component {
                     dataSource: [],
                     isHideListView: 'Refreshing',
                 })
-                setTimeout(() => {
-                    this.setState({
-                        dataSource: dataArray,
-                        isHideListView: 'RefreshHaveData',
-                        refreshing: false,
-                    })
-                }, 500);
+
+
+                if(Platform.OS == 'ios'){
+                    setTimeout(() => {
+                        this.setState({
+                            dataSource: dataArray,
+                            isHideListView: 'RefreshHaveData',
+                            refreshing: false,
+                        })
+                    }, 300);
+                }else{
+                    setTimeout(() => {
+                        this.setState({
+                            dataSource: dataArray,
+                            isHideListView: 'RefreshHaveData',
+                            refreshing: false,
+                        })
+                    }, 1000);
+                }
                 // console.warn('有数据');
             } else {
                 this.setState({
@@ -129,7 +142,7 @@ export default class SimpleListView extends Component {
             })
             // console.warn('加载中');
         } else if (isLoreMore == 'LoreMorehaveData') {
-            console.warn('有数据');
+            // console.warn('有数据');
 
 
             this.responseData = this.responseData.concat(dataArray);
