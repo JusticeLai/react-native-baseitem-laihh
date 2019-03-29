@@ -101,8 +101,6 @@ export default class TextInputAlert extends Component {
 
         let imageURL = this.props.imageURL ? this.props.imageURL : "";
 
-
-
         return (
             <Modal
                 key={0}
@@ -170,15 +168,14 @@ export default class TextInputAlert extends Component {
                     LeftTitle1, RightPlaceholder1, LeftTitle2, RightPlaceholder2, BtnNum, CancleTitle, ComfireTitle) {
 
         let secureTextEntry = data.secureTextEntry ? data.secureTextEntry : true;
-
+        let   keyboardType = data.keyboardType ? data.keyboardType : "default" ;
         return (
             <View style={{flex: 1, justifyContent: 'space-between', alignItems: 'center', overflow: 'hidden'}}>
                 {this.renderRightBtn(showRightBtn, onCLosePress)}
                 {this.renderTitle(Title)}
-                {this.renderPDW1(onChangeText, 0, LeftTitle1, RightPlaceholder1, secureTextEntry)}
-
+                {this.renderPDW1(onChangeText, 0, LeftTitle1, RightPlaceholder1, secureTextEntry,keyboardType)}
                 {
-                    TextInputNum == 2 ? this.renderPDW2(onChangeText, 1, LeftTitle2, RightPlaceholder2, secureTextEntry) : null
+                    TextInputNum == 2 ? this.renderPDW2(onChangeText, 1, LeftTitle2, RightPlaceholder2, secureTextEntry,keyboardType) : null
                 }
 
                 {
@@ -224,7 +221,7 @@ export default class TextInputAlert extends Component {
         )
     }
 
-    renderPDW1 (onChangeText, index, leftTitle, placeholder, secureTextEntry) {
+    renderPDW1 (onChangeText, index, leftTitle, placeholder, secureTextEntry,keyboardType) {
 
         return (
             <View style={{
@@ -260,6 +257,7 @@ export default class TextInputAlert extends Component {
                         paddingRight: 5
                     }}
                                maxLength={6}
+                               keyboardType={keyboardType}
                                secureTextEntry={secureTextEntry}
                                clearButtonMode={'while-editing'}
                                underlineColorAndroid='transparent'
@@ -295,7 +293,7 @@ export default class TextInputAlert extends Component {
     }
 
 
-    renderPDW2 (onChangeText, index, leftTitle, placeholder) {
+    renderPDW2 (onChangeText, index, leftTitle, placeholder,secureTextEntry,keyboardType) {
         return (
             <View style={{
                 height: 35,
@@ -324,7 +322,8 @@ export default class TextInputAlert extends Component {
                         paddingRight: 5
                     }}
                                maxLength={6}
-                               secureTextEntry={true}
+                               keyboardType={keyboardType}
+                               secureTextEntry={secureTextEntry}
                                clearButtonMode={'while-editing'}
                                underlineColorAndroid='transparent'
                                placeholderTextColor={'gray'}

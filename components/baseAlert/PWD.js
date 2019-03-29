@@ -88,7 +88,8 @@ export default class Password extends Component {
             Keyboard.dismiss();
         }
 
-
+        let onChangeText = this.props.onChangeText ? this.props.onChangeText : ()=> {
+        };
 
 
         if (this.state.isShowShop == true) {
@@ -129,7 +130,7 @@ export default class Password extends Component {
                                 <Text>确认付款</Text>
                             </View>
                             <View style={{width: 100, paddingRight: 10, alignItems: 'flex-end'}}>
-                                <Text>X</Text>
+                                <Text></Text>
                             </View>
 
                         </View>
@@ -156,7 +157,7 @@ export default class Password extends Component {
                                         onChangeText={
                                             (text) => {
                                                 this.setState({text});
-                                                this.props.onChange(text);
+                                                this.props.onChangeText(text);
                                                 if (text.length === this.props.maxLength) {
                                                     this.props.onEnd(text);
                                                 }

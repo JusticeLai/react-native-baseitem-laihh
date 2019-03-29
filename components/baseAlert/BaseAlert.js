@@ -23,6 +23,7 @@ import CheckBoxTextInputAlert from './CheckBoxTextInputAlert';
 import DailogAlert from './DailogAlert';
 import ImageAlert from './ImageAlert';
 import CodePushAlert from './CodePushAlertView';
+import WalletAlert from './WalletAlert';
 
 
 export default class BaseAlert extends Component {
@@ -61,6 +62,8 @@ export default class BaseAlert extends Component {
             this.alertView4.show();
         } else if (AlertType == 'ImageAlert') {
             this.alertView5.show();
+        } else if (AlertType == 'WalletAlert') {
+            this.alertView6.show();
         } else {
             this.setState({
                 modalVisible: true,
@@ -73,24 +76,28 @@ export default class BaseAlert extends Component {
     }
 
     hiddenAlert() {
+        Keyboard.dismiss();
 
-        let AlertType = this.props.AlertType ? this.props.AlertType : ""; //TextInputAlert  //ImageAlert // PassWordAlert //DailLogAlert//CheckBoxTextInputAlert
-
-        if (AlertType == 'PassWordAlert') {
-            this.alertView.hide();
-        } else if (AlertType == 'TextInputAlert') {
-            this.alertView2.hide();
-        } else if (AlertType == 'CheckBoxTextInputAlert') {
-            this.alertView3.hide();
-        } else if (AlertType == 'DailLogAlert') {
-            this.alertView4.hide();
-        } else if (AlertType == 'ImageAlert') {
-            this.alertView5.hide();
-        } else {
-            this.setState({
-                modalVisible: false
-            })
-        }
+        setTimeout(() => {
+            let AlertType = this.props.AlertType ? this.props.AlertType : ""; //TextInputAlert  //ImageAlert // PassWordAlert //DailLogAlert//CheckBoxTextInputAlert
+            if (AlertType == 'PassWordAlert') {
+                this.alertView.hide();
+            } else if (AlertType == 'TextInputAlert') {
+                this.alertView2.hide();
+            } else if (AlertType == 'CheckBoxTextInputAlert') {
+                this.alertView3.hide();
+            } else if (AlertType == 'DailLogAlert') {
+                this.alertView4.hide();
+            } else if (AlertType == 'ImageAlert') {
+                this.alertView5.hide();
+            } else if (AlertType == 'WalletAlert') {
+                this.alertView6.hide();
+            }  else {
+                this.setState({
+                    modalVisible: false
+                })
+            }
+        }, 200);
     }
 
 
@@ -143,11 +150,10 @@ export default class BaseAlert extends Component {
 
         let imageURL = this.props.imageURL ? this.props.imageURL : "";
 
-
         if (AlertType == 'PassWordAlert') {
-            return <Password ref={c => this.alertView = c} maxLength={6}/>
+            return <Password ref={c => this.alertView = c} maxLength={6} onChangeText={this.props.onChangeText}/>
         } else if (AlertType == 'TextInputAlert') {
-            return <TextInputAlert ref={c => this.alertView2 = c} data={data}/>
+            return <TextInputAlert ref={c => this.alertView2 = c} data={data} onBtnPress={this.props.onBtnPress} onChangeText={this.props.onChangeText}/>
         } else if (AlertType == 'CheckBoxTextInputAlert') {
             return <CheckBoxTextInputAlert ref={c => this.alertView3 = c} data={data}
                                            onBtnPress={this.props.onBtnPress}/>
@@ -155,6 +161,9 @@ export default class BaseAlert extends Component {
             return <DailogAlert ref={c => this.alertView4 = c} data={data}/>
         } else if (AlertType == 'ImageAlert') {
             return <ImageAlert imageURL={imageURL} ref={c => this.alertView5 = c} data={data}/>
+        }
+        else if (AlertType == 'WalletAlert') {
+            return <WalletAlert ref={c => this.alertView6 = c} data={data} onBtnPress={this.props.onBtnPress} />
         }
 
 
