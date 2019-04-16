@@ -19,7 +19,7 @@ import {
 import Modal from 'react-native-modalbox';
 
 
-export default class  WalletAlert extends Component {
+export default class WalletAlert extends Component {
 
 
     constructor(props) {
@@ -27,7 +27,7 @@ export default class  WalletAlert extends Component {
 
         this.state = {
             isShowShop: props.isShowShop,
-
+            AlertType: '0' //0红包展示界面  1红包详情
         };
     }
 
@@ -44,11 +44,11 @@ export default class  WalletAlert extends Component {
 
 
     show() {
-        this.setState({isShowShop: true})
+        this.setState({isShowShop: true,AlertType:'0'})
     }
 
     hide() {
-        this.setState({isShowShop: false});
+        this.setState({isShowShop: false,AlertType:'0'});
     }
 
 
@@ -61,11 +61,12 @@ export default class  WalletAlert extends Component {
         let height = data.height ? data.height : 350;
 
 
-        let marginBottom = data.marginBottom ? data.marginBottom : getheight /3;
+        let marginBottom = data.marginBottom ? data.marginBottom : getheight / 3;
         let width = getwidth * 0.7;
 
         let onBtnPress = this.props.onBtnPress ? this.props.onBtnPress : ()=> {
         };
+
         let onCLosePress = this.props.onClosePress ? this.props.onClosePress : ()=> {
             this.setState({text: '', isShowShop: false});
             Keyboard.dismiss();
@@ -73,6 +74,8 @@ export default class  WalletAlert extends Component {
 
         let onBGPress = this.props.onBGPress ? this.props.onBGPress : ()=> {
         };
+
+
 
         let onChangeText = this.props.onChangeText ? this.props.onChangeText : ()=> {
         };
@@ -135,15 +138,33 @@ export default class  WalletAlert extends Component {
                         width: width,
                         height: height,
                         borderRadius: 12,
-                        backgroundColor: "rgb(255,255,255)",
+                        backgroundColor:'transparent',
                         justifyContent: 'center',
                         marginBottom: marginBottom
                     }}>
-                        {
+                        {this.state.AlertType == '0' ?
                             this.renderChildView(
                                 data,
                                 type,
-                                onBtnPress,
+                                ()=>{  this.setState({AlertType:'1'});onBtnPress(0)},
+                                onCLosePress,
+                                onChangeText,
+                                showRightBtn,
+                                TextInputNum,
+                                Title,
+                                Title2,
+                                LeftTitle1,
+                                RightPlaceholder1,
+                                LeftTitle2,
+                                RightPlaceholder2,
+                                BtnNum,
+                                CancleTitle,
+                                ComfireTitle
+                            ) :
+                            this.renderChildView2(
+                                data,
+                                type,
+                                ()=>{ onBtnPress(1)},
                                 onCLosePress,
                                 onChangeText,
                                 showRightBtn,
@@ -170,70 +191,89 @@ export default class  WalletAlert extends Component {
 
     renderChildView(data, type, onBtnPress, onCLosePress, onChangeText, showRightBtn, TextInputNum, Title, Title2,
                     LeftTitle1, RightPlaceholder1, LeftTitle2, RightPlaceholder2, BtnNum, CancleTitle, ComfireTitle) {
-
-        let secureTextEntry = data.secureTextEntry ? data.secureTextEntry : true;
+        let getwidth = Dimensions.get('window').width;
 
         return (
             <View style={{flex: 1, justifyContent: 'space-between', alignItems: 'center', overflow: 'hidden'}}>
+                {/*<View style={{width:getwidth*0.9,height:100,backgroundColor:rgb(144,49,40),position:'absolute',left:-getwidth*0.1,bottom:0,borderRadius:100}}/>*/}
+                {/*<View style={{width:getwidth*0.9,height:330,backgroundColor:rgb(250,57,49),position:'absolute',left:-getwidth*0.1,top:-50,borderRadius:100}}/>*/}
+                <Image source={data.image} resizeMode={'contain'} style={{width:getwidth,position:'absolute',top:0,left:-63,height:350,zIndex:10}}/>
                 {this.renderRightBtn(showRightBtn, onCLosePress)}
-                {this.renderImage()}
-                {this.renderTitle(data.title,14)}
-                {this.renderTitle(data.title2,14)}
-                {this.renderTitle(data.title3,16,'bold')}
+                {this.renderImage(data.userInfo.logoUrl)}
+                {this.renderTitle(data.userInfo.storeName, 20,'bold',0)}
+                {this.renderTitle('恭喜您获得一个现金红包',14,'normal',70)}
                 {this.renderBtn(onBtnPress)}
             </View>
         )
     }
 
+
+    renderChildView2(data, type, onBtnPress, onCLosePress, onChangeText, showRightBtn, TextInputNum, Title, Title2,
+                     LeftTitle1, RightPlaceholder1, LeftTitle2, RightPlaceholder2, BtnNum, CancleTitle, ComfireTitle) {
+
+        let userInfo = data.userInfo
+        let getwidth = Dimensions.get('window').width;
+        return (
+            <View style={{flex: 1, justifyContent: 'space-between', alignItems: 'center', overflow: 'hidden'}}>
+                <Image source={data.image2} resizeMode={'contain'} style={{width:getwidth,position:'absolute',top:0,left:-63,height:350,zIndex:10}}/>
+                {this.renderRightBtn(showRightBtn, onCLosePress)}
+                {this.renderBtn2(onBtnPress,userInfo.storeName,userInfo.money)}
+            </View>
+        )
+    }
+
+
     renderRightBtn(showRightBtn, onCLosePress) {
         return (
             showRightBtn == true ? <TouchableOpacity style={{
-                height: 30,
-                width: 30,
+                height: 25,
+                width: 25,
                 position: 'absolute',
                 right: 5,
-                top: 5,
+                top: 0,
                 backgroundColor: 'transparent',
                 justifyContent: 'center',
                 borderRadius: 20,
                 borderColor: 'rgb(200,200,200)',
                 borderWidth: 1,
-                alignItems: 'center'
+                alignItems: 'center',
+                zIndex:11,
             }} onPress={()=> {
                 this.hide();
                 onCLosePress()
             }}>
-                <Text>{'X'}</Text>
+                <Text style={{color:'rgb(200,200,200)'}}>{'X'}</Text>
             </TouchableOpacity> : null
         )
     }
 
-    renderTitle(title,fontSize,fontWeight) {
+    renderTitle(title, fontSize, fontWeight,marginBottom) {
         return (
             <View style={{
                 height: 35,
                 justifyContent: 'center',
                 alignItems: 'center',
-                flexDirection: 'row'
+                flexDirection: 'row',
+                backgroundColor:'transparent',
+                marginBottom:marginBottom,
+                zIndex:11,
             }}>
-                <Text style={{fontSize: fontSize, fontWeight: fontWeight}}>{title}</Text>
+                <Text style={{fontSize: fontSize, fontWeight: fontWeight, zIndex:11,  color:'white',}}>{title}</Text>
             </View>
         )
     }
 
     renderImage(type) {
 
-        let url = 'green'
-        if(type == 'success'){
-            url = 'green'
-        }else if(type == 'fail'){
-            url = 'red'
-        }
+        // let url = 'green'
+        // if (type == 'success') {
+        //     url = 'green'
+        // } else if (type == 'fail') {
+        //     url = 'red'
+        // }
         return (
-            <View style={{flex: 1}}>
-                <Image
-                    style={{width: 60, height: 60, backgroundColor: url,marginVertical:20}}
-                />
+            <View style={{flex: 1,zIndex:100, }}>
+                <Image style={{width: 76, height: 76, borderRadius:38,zIndex:100,marginRight:Platform.OS == 'ios' ? 16 :13,borderWidth:3, borderColor:'rgb(248,164,168)'}} source={{uri:type}}/>
             </View>
 
         )
@@ -243,9 +283,59 @@ export default class  WalletAlert extends Component {
     renderBtn(onBtnPress, leftTitle, rightTitle) {
 
         return (
-            <TouchableOpacity onPress={onBtnPress} style={{borderColor:'lightgray',borderWidth:2,width:80,height:80,borderRadius:80,marginVertical:30,justifyContent:'center',alignItems:'center'}}>
-                <Text>{'开'}</Text>
+            <TouchableOpacity onPress={onBtnPress} style={{
+                width: 80,
+                height: 80,
+                borderRadius: 80,
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginBottom:50,
+                marginRight:10,
+                backgroundColor:'transparent',
+                zIndex:100,
+            }}>
+                <Text style={{color:'white',fontSize:30,fontWeight:'bold'}}>{}</Text>
             </TouchableOpacity>
+        )
+    }
+
+
+
+    renderBtn2(onBtnPress,storeName, money) {
+
+        return (
+            <View style={{justifyContent:'flex-end',alignItems:'center',flex:1,flexDirection:'column',zIndex:100, }}>
+
+                <View>
+                    <Text style={{marginTop:20,fontSize:20,color:'white'}}>{storeName}</Text>
+                </View>
+                <View>
+                    <Text style={{color:'gray',marginTop:5,fontSize:12,color:'white'}}>感谢你的惠顾</Text>
+                </View>
+                <View style={{justifyContent:'center',alignItems:'center',flex:1,flexDirection:'row',marginTop:70,marginRight:20}}>
+                    <Text style={{color:'rgb(176,37,48)',fontSize:30}}>{'￥'}</Text>
+                    <Text style={{color:'rgb(176,37,48)',fontSize:50,fontWeight:'bold'}}>{money}</Text>
+                </View>
+                <View>
+                    <Text style={{color:'gray',fontSize:12,marginBottom:35}}>{'红包可全店畅买无限制'}</Text>
+                </View>
+                <View style={{height:20,marginTop:5,marginBottom:13}}>
+                    <Text style={{color:'white',fontSize:12}}>{'可以前往我的钱包查看'}</Text>
+                </View>
+                <TouchableOpacity onPress={onBtnPress} style={{
+                    width: 200,
+                    height: 36,
+                    marginBottom: 20,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    borderRadius: 36,
+                    backgroundColor:'#FF0532'
+
+                }}>
+                    <Text style={{ color:'white',fontSize:16}}>{'立即前往'}</Text>
+                </TouchableOpacity>
+            </View>
+
         )
     }
 
