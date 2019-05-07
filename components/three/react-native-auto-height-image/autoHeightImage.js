@@ -4,7 +4,8 @@
  */
 
 import React, { PureComponent } from 'react';
-import Image from 'react-native-android-image-polyfill';
+// import Image from 'react-native-android-image-polyfill';
+import Image from './react-native-android-image-polyfill/index';
 import { StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
