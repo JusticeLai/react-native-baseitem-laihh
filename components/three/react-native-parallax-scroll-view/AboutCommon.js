@@ -5,7 +5,7 @@ import {DeviceInfo, View, Text, Image, Dimensions, StyleSheet, Platform} from "r
 import ParallaxScrollView from './index';
 import GlobalStyles from './GlobalStyles'
 // import UserInfo from "../../utils/UserInfo";
-
+import {CachedImage} from "../react-native-img-cache/build/index";
 export default class AboutCommon  {
 
     constructor(props) {
@@ -61,16 +61,18 @@ export default class AboutCommon  {
         // })
     }
 
-    getParallaxRenderConfig(navigationBar,params) {
+// <Image source={{
+//     uri: params.backgroundImg,
+//     width: window.width,
+//     height: PARALLAX_HEADER_HEIGHT
+// }}/>
+    getParallaxRenderConfig(navigationBar,params,topInitView) {
         let config = {};
         let avatar = typeof(params.avatar) === 'string' ? {uri: params.avatar} : params.avatar;
         config.renderBackground = () => (
             <View key="background">
-                <Image source={{
-                    uri: params.backgroundImg,
-                    width: window.width,
-                    height: PARALLAX_HEADER_HEIGHT
-                }}/>
+                <CachedImage style={{width: window.width, height:PARALLAX_HEADER_HEIGHT}}
+                             source={{uri: params.backgroundImg}} />
                 <View style={{
                     position: 'absolute',
                     top: 0,
@@ -90,6 +92,7 @@ export default class AboutCommon  {
                 <Text style={styles.sectionTitleText}>
                     {params.description}
                 </Text>
+                {topInitView}
             </View>
         );
         config.renderStickyHeader = () => (
@@ -100,16 +103,14 @@ export default class AboutCommon  {
         config.renderFixedHeader = () => (
             <View key="fixed-header" style={styles.fixedSection}>
                 {navigationBar}
-                {/*{params.showLeft ? ViewUtil.getLeftBackButton(onLeftPress) : null}*/}
-                {/*{params.showRight ? ViewUtil.getShareButton(onRightPress) : null}*/}
             </View>
         );
         return config;
 
     }
 
-    render(navigationBar,contentView, params) {
-        const renderConfig = this.getParallaxRenderConfig(navigationBar,params);
+    render(navigationBar,contentView, params,topInitView) {
+        const renderConfig = this.getParallaxRenderConfig(navigationBar,params,topInitView);
         return (
             <ParallaxScrollView
                 backgroundColor={params.activeTintColor}
@@ -173,7 +174,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flex: 1,
         flexDirection: 'column',
-        paddingTop: 100
+        // paddingTop: 100
     },
     avatar: {
         marginBottom: 10,

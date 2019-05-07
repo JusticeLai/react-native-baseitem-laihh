@@ -178,6 +178,11 @@ export default class SimpleListView extends Component {
         }
     }
 
+    goToTop (){
+        if (this._flatList) {
+            this._flatList.scrollToIndex({ viewPosition: 0, index: 0 });
+        }
+    }
 
     render() {
         return (

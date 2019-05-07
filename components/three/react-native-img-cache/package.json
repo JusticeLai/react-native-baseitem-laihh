@@ -1,0 +1,70 @@
+{
+  "_from": "react-native-img-cache",
+  "_id": "react-native-img-cache@1.6.0",
+  "_inBundle": false,
+  "_integrity": "sha512-4LDlOW6hmFG4l0QjStuvIPuhpgr4VxKMjWsX2OPlfzgPUBV4bcipGoBf4wuAh2yJ1YuvEQYXKEiaUHopIK4mzA==",
+  "_location": "/react-native-img-cache",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "react-native-img-cache",
+    "name": "react-native-img-cache",
+    "escapedName": "react-native-img-cache",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-native-img-cache/-/react-native-img-cache-1.6.0.tgz",
+  "_shasum": "79635bd249146f4973629d53047edac05d6f9533",
+  "_spec": "react-native-img-cache",
+  "_where": "/Users/gls/Desktop/Project/RN/entone",
+  "author": {
+    "name": "William Candillon",
+    "email": "wcandillon@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/wcandillon/react-native-img-cache/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "crypto-js": "^3.1.9-1"
+  },
+  "deprecated": false,
+  "description": "CachedImage component for React native",
+  "devDependencies": {
+    "@types/react": "^16.0.5",
+    "@types/react-native": "^0.49.2",
+    "ts-npm-lint": "^0.1.0",
+    "tslint": "^4.4.2",
+    "typescript": "^2.1.6"
+  },
+  "files": [
+    "build"
+  ],
+  "homepage": "https://github.com/wcandillon/react-native-img-cache#readme",
+  "keywords": [
+    "react",
+    "image",
+    "cache"
+  ],
+  "license": "Apache-2.0",
+  "main": "build/index.js",
+  "name": "react-native-img-cache",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wcandillon/react-native-img-cache.git"
+  },
+  "scripts": {
+    "build": "tsc --pretty",
+    "lint": "tslint --project tsconfig.json",
+    "test": "npm run lint && npm run build",
+    "watch": "tsc --watch --pretty"
+  },
+  "typings": "build/index.d.ts",
+  "version": "1.6.0"
+}
