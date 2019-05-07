@@ -4,7 +4,7 @@ import {DeviceInfo, View, Text, Image, Dimensions, StyleSheet, Platform} from "r
 // import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import ParallaxScrollView from './index';
 import GlobalStyles from './GlobalStyles'
-import UserInfo from "../../utils/UserInfo";
+// import UserInfo from "../../utils/UserInfo";
 
 export default class AboutCommon  {
 
@@ -112,7 +112,7 @@ export default class AboutCommon  {
         const renderConfig = this.getParallaxRenderConfig(navigationBar,params);
         return (
             <ParallaxScrollView
-                backgroundColor={UserInfo.getUserInfo().activeTintColor}
+                backgroundColor={params.activeTintColor}
                 contentBackgroundColor={GlobalStyles.backgroundColor}
                 parallaxHeaderHeight={PARALLAX_HEADER_HEIGHT}
                 stickyHeaderHeight={STICKY_HEADER_HEIGHT}
