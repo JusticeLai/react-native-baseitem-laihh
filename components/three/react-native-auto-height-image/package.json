@@ -1,26 +1,27 @@
 {
-  "_from": "react-native-auto-height-image@^1.1.0",
+  "_from": "react-native-auto-height-image",
   "_id": "react-native-auto-height-image@1.1.0",
   "_inBundle": false,
   "_integrity": "sha512-vJH0NKyvzp9NtTNlcX/oEnKGgY2ZXW0VhQoz1TGNaxDHqpgtkTi645kS4ehjU95GV8h4pxIYYd/6SyuwXH2vrw==",
   "_location": "/react-native-auto-height-image",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "tag",
     "registry": true,
-    "raw": "react-native-auto-height-image@^1.1.0",
+    "raw": "react-native-auto-height-image",
     "name": "react-native-auto-height-image",
     "escapedName": "react-native-auto-height-image",
-    "rawSpec": "^1.1.0",
+    "rawSpec": "",
     "saveSpec": null,
-    "fetchSpec": "^1.1.0"
+    "fetchSpec": "latest"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/react-native-auto-height-image/-/react-native-auto-height-image-1.1.0.tgz",
   "_shasum": "509f441b4d5fc83ce9abfd5f459640f0273f5d01",
-  "_spec": "react-native-auto-height-image@^1.1.0",
+  "_spec": "react-native-auto-height-image",
   "_where": "/Users/gls/Desktop/Project/RN/entone",
   "author": {
     "name": "vivaxy"

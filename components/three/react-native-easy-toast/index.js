@@ -18,7 +18,7 @@ import {
 
 import PropTypes from 'prop-types';
 const ViewPropTypes = RNViewPropTypes || View.propTypes;
-export const DURATION = { 
+export const DURATION = {
     LENGTH_SHORT: 500,
     FOREVER: 0,
 };
