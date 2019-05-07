@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5cff8749-b9be-4ac2-b102-5149a5739b00" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/three/react-native-auto-height-image/autoHeightImage.js" afterPath="$PROJECT_DIR$/components/three/react-native-auto-height-image/autoHeightImage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-    </list>
+    <list default="true" id="5cff8749-b9be-4ac2-b102-5149a5739b00" name="Default" comment="" />
     <ignored path="GitHub.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -155,7 +152,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="432" />
+    <option name="x" value="585" />
     <option name="y" value="80" />
     <option name="width" value="1786" />
     <option name="height" value="994" />
@@ -427,15 +424,15 @@
       <workItem from="1557116697147" duration="257000" />
       <workItem from="1557123300589" duration="75000" />
       <workItem from="1557198506189" duration="2765000" />
-      <workItem from="1557202472963" duration="1447000" />
+      <workItem from="1557202472963" duration="1473000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52825000" />
+    <option name="totallyTimeSpent" value="52851000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="432" y="80" width="1786" height="994" extended-state="0" />
+    <frame x="585" y="80" width="1786" height="994" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24929178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
