@@ -67,10 +67,7 @@ export default class WalletAlert extends Component {
         let onBtnPress = this.props.onBtnPress ? this.props.onBtnPress : ()=> {
         };
 
-        let onCLosePress = this.props.onClosePress ? this.props.onClosePress : ()=> {
-            this.setState({text: '', isShowShop: false});
-            Keyboard.dismiss();
-        }
+        let onClosePress = this.props.onClosePress ? this.props.onClosePress : ()=> {}
 
         let onBGPress = this.props.onBGPress ? this.props.onBGPress : ()=> {
         };
@@ -147,7 +144,7 @@ export default class WalletAlert extends Component {
                                 data,
                                 type,
                                 ()=>{  this.setState({AlertType:'1'});onBtnPress(0)},
-                                onCLosePress,
+                                ()=>{  this.hide();onClosePress(0)},
                                 onChangeText,
                                 showRightBtn,
                                 TextInputNum,
@@ -165,7 +162,7 @@ export default class WalletAlert extends Component {
                                 data,
                                 type,
                                 ()=>{ onBtnPress(1)},
-                                onCLosePress,
+                                ()=>{  this.hide();onClosePress(1)},
                                 onChangeText,
                                 showRightBtn,
                                 TextInputNum,
@@ -238,10 +235,7 @@ export default class WalletAlert extends Component {
                 borderWidth: 1,
                 alignItems: 'center',
                 zIndex:11,
-            }} onPress={()=> {
-                this.hide();
-                onCLosePress()
-            }}>
+            }} onPress={onCLosePress}>
                 <Text style={{color:'rgb(200,200,200)'}}>{'X'}</Text>
             </TouchableOpacity> : null
         )

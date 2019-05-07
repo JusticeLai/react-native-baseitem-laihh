@@ -59,7 +59,7 @@ class CountDown extends Component {
 
 
 
-    containerStyle: View.propTypes.style,
+    containerStyle: PropTypes.style,
     // daysStyle: View.propTypes.style,
     // hoursStyle: View.propTypes.style,
     // minsStyle: View.propTypes.style,

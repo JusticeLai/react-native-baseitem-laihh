@@ -1,0 +1,105 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "react-native-auto-height-image",
+        "scope": null,
+        "escapedName": "react-native-auto-height-image",
+        "name": "react-native-auto-height-image",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/gls/Desktop/Project/RN/新婴桐说"
+    ]
+  ],
+  "_cnpm_publish_time": 1516241187352,
+  "_from": "react-native-auto-height-image@latest",
+  "_id": "react-native-auto-height-image@1.0.0",
+  "_inCache": true,
+  "_location": "/react-native-auto-height-image",
+  "_nodeVersion": "8.9.3",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/react-native-auto-height-image-1.0.0.tgz_1516241187159_0.7995596898254007"
+  },
+  "_npmUser": {
+    "name": "vivaxy",
+    "email": "xyxuye2007@126.com"
+  },
+  "_npmVersion": "5.6.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "react-native-auto-height-image",
+    "scope": null,
+    "escapedName": "react-native-auto-height-image",
+    "name": "react-native-auto-height-image",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npm.taobao.org/react-native-auto-height-image/download/react-native-auto-height-image-1.0.0.tgz",
+  "_shasum": "24d0ef98fc4c25ef46a7d915b885bc556477cdb9",
+  "_shrinkwrap": null,
+  "_spec": "react-native-auto-height-image",
+  "_where": "/Users/gls/Desktop/Project/RN/新婴桐说",
+  "author": {
+    "name": "vivaxy"
+  },
+  "bugs": {
+    "url": "https://github.com/vivaxy/react-native-auto-height-image/issues"
+  },
+  "dependencies": {
+    "prop-types": "^15.5.8",
+    "react-native-android-image-polyfill": "^1.0.0"
+  },
+  "description": "react-native auto height image",
+  "devDependencies": {
+    "react": "16.0.0-alpha.6",
+    "react-native": "^0.43.4",
+    "standard-version": "^4.0.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "24d0ef98fc4c25ef46a7d915b885bc556477cdb9",
+    "size": 40253,
+    "noattachment": false,
+    "tarball": "http://registry.npm.taobao.org/react-native-auto-height-image/download/react-native-auto-height-image-1.0.0.tgz"
+  },
+  "gitHead": "8190df1dcef5f73a92b865b5647deb01bd96ff31",
+  "gtScaffoldVersion": "0.1.0",
+  "homepage": "https://github.com/vivaxy/react-native-auto-height-image#readme",
+  "keywords": [
+    "react-native",
+    "image",
+    "auto-height"
+  ],
+  "license": "MIT",
+  "main": "./index.js",
+  "maintainers": [
+    {
+      "name": "vivaxy",
+      "email": "xyxuye2007@126.com"
+    }
+  ],
+  "name": "react-native-auto-height-image",
+  "optionalDependencies": {},
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "publish_time": 1516241187352,
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/vivaxy/react-native-auto-height-image.git"
+  },
+  "scripts": {
+    "release": "standard-version && git push --follow-tags && npm publish --registry=https://registry.npmjs.org/"
+  },
+  "version": "1.0.0"
+}

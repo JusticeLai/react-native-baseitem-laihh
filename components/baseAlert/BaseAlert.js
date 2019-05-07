@@ -121,7 +121,7 @@ export default class BaseAlert extends Component {
 
 
 
-        let onCLosePress = this.props.onCLosePress ? this.props.onCLosePress : ()=> {
+        let onClosePress = this.props.onClosePress ? this.props.onClosePress : ()=> {
         };
         let onBGPress = this.props.onBGPress ? this.props.onBGPress : ()=> {
         };
@@ -166,7 +166,7 @@ export default class BaseAlert extends Component {
             return <ImageAlert imageURL={imageURL} ref={c => this.alertView5 = c} data={data}/>
         }
         else if (AlertType == 'WalletAlert') {
-            return <WalletAlert ref={c => this.alertView6 = c} data={data} onCLosePress={onCLosePress} onBtnPress={this.props.onBtnPress} />
+            return <WalletAlert ref={c => this.alertView6 = c} data={data} onClosePress={onClosePress} onBtnPress={this.props.onBtnPress} />
         }
 
 

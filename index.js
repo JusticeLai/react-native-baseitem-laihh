@@ -19,13 +19,18 @@ import CountdownView from './components/three/CountdownView';//定时器--短信
 
 import CountDownTimer from './components/three/CountDownReact';//时分秒...倒计时
 import QRCodeTwo from './components/three/QRCodeTwo/QRCode';//二维码生产
-
-
+import AutoHeightImage from './components/three/react-native-auto-height-image/index';//图片自适应高度
+import CheckBox from './components/three/react-native-check-box/index';//复选框
+import AboutCommon from './components/three/react-native-parallax-scroll-view/AboutCommon';// 拉伸图片
 import StarRating from './components/three/react-native-start-rating/star-rating';//评分星星
+import Toast from './components/three/react-native-easy-toast/index';//Toast
 
 
 
 import BaseNavigationBar from './components/widget/BaseNavigationBar';//定时器
+import BackGroundImage from './components/widget/BackGroundImage';//背景图
+import FirstEnterView from './components/widget/FirstEnterView';//第一次进去的轮播图
+import LoadingView from './components/widget/LoadingView';//加载界面
 import CodePushAlertView from './components/widget/CodePushAlertView';//定时器
 
 
@@ -39,6 +44,7 @@ import indexTest from './indexTest';//侧滑删除
 
 
 import AddCutCoutView from './components/widget/AddCutCoutView';//数字加减
+
 
 
 import CommonStyle from './components/style/CommonStyle';
@@ -86,6 +92,9 @@ export {
     md5,
     CountdownView,
     BaseNavigationBar,
+    BackGroundImage,
+    FirstEnterView,
+    LoadingView,
     CodePushAlertView,
     Swiper,//广告轮播
     SwipeListView,//侧滑删除
@@ -98,8 +107,11 @@ export {
     SimpleListView,
     AddCutCoutView,
     ImageUtils,
+    AutoHeightImage,
+    CheckBox,
+    AboutCommon,
+    Toast,
     // MessageView,
     // playSound,
 }
-
 

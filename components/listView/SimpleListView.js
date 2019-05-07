@@ -78,9 +78,9 @@ export default class SimpleListView extends Component {
                     }, 1000);
                 }
                 this.setState({
-                    refreshing: true,
-                    dataSource: [],
-                    isHideListView: 'Refreshing',
+                    // refreshing: true,
+                    // dataSource: [],
+                    isLoreMoreing: 'LoreMoreing',
                 })
 
 
@@ -226,7 +226,7 @@ export default class SimpleListView extends Component {
                                 title={this.state.refreshingTip}/>
                         }
                         keyExtractor={(item, index)=>item.key = index}
-                        onEndReachedThreshold={1}
+                        onEndReachedThreshold={0.1}
                         onEndReached={this.props.LoreMore}
                         onScrollEndDrag={this.handleEndDrag}
 

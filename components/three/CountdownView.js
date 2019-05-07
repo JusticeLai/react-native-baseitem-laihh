@@ -14,7 +14,6 @@ import {
     TouchableOpacity,
     View,
     AppState,
-    ViewPropTypes,
     NetInfo,
 } from 'react-native';
 
@@ -49,12 +48,12 @@ const styles = StyleSheet.create({
 export default class Countdown extends PureComponent {
 
   static propTypes = {
-    style: ViewPropTypes.style,
+    style: PropTypes.style,
     title: PropTypes.string,
     time: PropTypes.number,
     overTitle: PropTypes.string,
     titleStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
-    countingStyle: ViewPropTypes.style,
+    countingStyle: PropTypes.style,
     countingTitleTemplate: PropTypes.string,
     countingTitleStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
     shouldStartCountdown: PropTypes.func,
