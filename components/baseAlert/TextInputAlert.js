@@ -167,7 +167,7 @@ export default class TextInputAlert extends Component {
     renderChildView(data, onBtnPress, onCLosePress, onChangeText, showRightBtn, TextInputNum, Title,
                     LeftTitle1, RightPlaceholder1, LeftTitle2, RightPlaceholder2, BtnNum, CancleTitle, ComfireTitle) {
 
-        let secureTextEntry = data.secureTextEntry ? data.secureTextEntry : true;
+        let secureTextEntry = data.SecureTextEntry ? data.SecureTextEntry :  data.SecureTextEntry ;
         let   keyboardType = data.keyboardType ? data.keyboardType : "default" ;
         return (
             <View style={{flex: 1, justifyContent: 'space-between', alignItems: 'center', overflow: 'hidden'}}>
