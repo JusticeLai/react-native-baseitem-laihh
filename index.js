@@ -20,7 +20,7 @@ import CountdownView from './components/three/CountdownView';//定时器--短信
 import CountDownTimer from './components/three/CountDownReact';//时分秒...倒计时
 import QRCodeTwo from './components/three/QRCodeTwo/QRCode';//二维码生产
 import AutoHeightImage from './components/three/react-native-auto-height-image/index';//图片自适应高度
-import CheckBox from './components/three/react-native-check-box/index';//复选框
+// import CheckBox from './components/three/react-native-check-box/index';//复选框
 import AboutCommon from './components/three/react-native-parallax-scroll-view/AboutCommon';// 拉伸图片
 import StarRating from './components/three/react-native-start-rating/star-rating';//评分星星
 import Toast from './components/three/react-native-easy-toast/index';//Toast
@@ -108,7 +108,7 @@ export {
     AddCutCoutView,
     ImageUtils,
     AutoHeightImage,
-    CheckBox,
+    // CheckBox,
     AboutCommon,
     Toast,
     // MessageView,

@@ -269,8 +269,8 @@ export default class EasyListView extends Component {
         if (page == 0) {
             this.setState({page: '1', top: ''});
         }
-        console.log(page);
-        console.log(height);
+        // console.log(page);
+        // console.log(height);
     }
 
 

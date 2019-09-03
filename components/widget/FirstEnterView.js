@@ -105,9 +105,13 @@ export default class FirstEnterView extends Component {
             </View>
         )
     }
+
     componentDidMount() {
         this.alertView2.isHaveCodePushUpdate()
     }
+
+
+
 
 
 }

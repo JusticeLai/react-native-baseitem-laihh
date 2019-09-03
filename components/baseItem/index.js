@@ -316,6 +316,10 @@ export default class SCBaseItemView extends Component {
         let text3fontSize = data && data.text3fontSize ? data.text3fontSize : 14;
         let onPress = this.props.onPress ? this.props.onPress : ()=> {
         };
+
+        let text4 = data && data.text4 ? data.text4 : '';
+        let text4Color = data && data.text4Color ? data.text4Color : 'gray'
+
         let lineHeight = this.props.underLine == false ? 0 : 1;
         let image = data && data.image ? data.image : '';
         let paddingLeftUnderLine = data && data.paddingLeftUnderLine ? data.paddingLeftUnderLine : 15;
@@ -330,13 +334,13 @@ export default class SCBaseItemView extends Component {
                     justifyContent: 'center',
                     alignItems: 'center',
                     flexDirection: 'row',
-                    height: 100
+                    height: 120
                 }}>
                     <View style={{
                         justifyContent: 'center',
                         alignItems: 'center',
                         width: 90,
-                        height: 100,
+                        height: 120,
                     }}>
                         {image == '' ? null : <Image style={{width: 80, height: 80, margin: 5}} source={{uri: image}}/>}
 
@@ -349,6 +353,9 @@ export default class SCBaseItemView extends Component {
                     }}>
                         <View style={{flex: 1, justifyContent: 'center'}}>
                             <Text numberOfLines={2} style={{paddingRight: 5}}>{text1}</Text>
+                        </View>
+                        <View style={{flex: 1, justifyContent: 'center'}}>
+                            <Text numberOfLines={1} style={{paddingRight: 5,color:text4Color}}>{text4}</Text>
                         </View>
                         <View style={{
                             flexDirection: 'row',
@@ -373,6 +380,8 @@ export default class SCBaseItemView extends Component {
             </TouchableOpacity>
         )
     }
+
+
 
 
     renderType5() {
