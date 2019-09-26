@@ -152,7 +152,7 @@ export default class Password extends Component {
                                         value={this.state.text}
                                         //ref={c => this.textInput = c}
                                         maxLength={this.props.maxLength}
-                                        autoFocus={false}
+                                        autoFocus={true}
                                         keyboardType= {Platform.OS == 'ios' ? "number-pad" : "numeric"}
                                         onChangeText={
                                             (text) => {
