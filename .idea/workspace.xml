@@ -2,8 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5cff8749-b9be-4ac2-b102-5149a5739b00" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/three/QRCodeTwo/qr/.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/three/QRCodeTwo/qr/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/three/QRCodeTwo/qr/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/three/QRCodeTwo/qr/example/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/three/QRCodeTwo/qr/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/three/QRCodeTwo/qr/lib/8BitByte.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/three/QRCodeTwo/qr/lib/BitBuffer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/three/QRCodeTwo/qr/lib/ErrorCorrectLevel.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/three/QRCodeTwo/qr/lib/LICENSE-qrcode" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/three/QRCodeTwo/qr/lib/Polynomial.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/three/QRCodeTwo/qr/lib/QRCode.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/three/QRCodeTwo/qr/lib/RSBlock.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/three/QRCodeTwo/qr/lib/math.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/three/QRCodeTwo/qr/lib/mode.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/three/QRCodeTwo/qr/lib/util.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/components/three/QRCodeTwo/qr/package.json" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/baseAlert/PWD.js" afterPath="$PROJECT_DIR$/components/baseAlert/PWD.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/three/QRCodeTwo/QRCode.js" afterPath="$PROJECT_DIR$/components/three/QRCodeTwo/QRCode.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
@@ -28,21 +43,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PWD.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/baseAlert/PWD.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="158" column="24" selection-start-line="158" selection-start-column="24" selection-end-line="158" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+            <state relative-caret-position="285">
+              <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -123,7 +128,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="479" />
+    <option name="x" value="134" />
     <option name="y" value="70" />
     <option name="width" value="1786" />
     <option name="height" value="994" />
@@ -200,6 +205,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="three" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GitHub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GitHub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="three" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="QRCodeTwo" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -425,15 +452,16 @@
       <workItem from="1563333366471" duration="671000" />
       <workItem from="1563334613363" duration="61000" />
       <workItem from="1567732107307" duration="21000" />
-      <workItem from="1569464460174" duration="108000" />
+      <workItem from="1569464460174" duration="166000" />
+      <workItem from="1569465565523" duration="113000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56763000" />
+    <option name="totallyTimeSpent" value="56934000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="479" y="70" width="1786" height="994" extended-state="0" />
+    <frame x="134" y="70" width="1786" height="994" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24929178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -471,13 +499,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/components/baseItem/RadioGroup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="51" column="16" selection-start-line="0" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index2.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -678,13 +699,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/three/QRCodeTwo/Canvas.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/three/react-native-easy-toast/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2175">
@@ -783,10 +797,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/components/three/QRCodeTwo/qr.js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/components/three/QRCodeTwo/QRCode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        <state relative-caret-position="60">
+          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/three/QRCodeTwo/Canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -801,8 +831,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+        <state relative-caret-position="285">
+          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
           <folding />
         </state>
       </provider>

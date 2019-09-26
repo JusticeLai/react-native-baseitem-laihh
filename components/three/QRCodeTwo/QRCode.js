@@ -2,7 +2,7 @@ var React = require('react');
 var PropTypes = require('prop-types');
 var createReactClass = require('create-react-class');
 var Canvas = require('./Canvas.js');
-var qr = require('./qr/index.js');
+var qr = require('./qr.js/index.js');
 var {
     View,WebView
 } = require('react-native');
