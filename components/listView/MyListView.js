@@ -120,7 +120,7 @@ export default class EasyListView extends Component {
                             //getItemLayout={(data,index)=>(
                             //{length: ITEM_HEIGHT, offset: (ITEM_HEIGHT+2) * index, index}
                             //)}
-                            keyExtractor={(item, index)=>item.key = index}
+                            keyExtractor={(item, index) => item.key = index.toString()}
                             onEndReachedThreshold={0.1}
                             onEndReached={this.props.LoreMore}
                             onScrollEndDrag={this.handleEndDrag}
@@ -173,7 +173,7 @@ export default class EasyListView extends Component {
                                     onRefresh={this.props.Refresh}
                                     title="Loading..."/>
                             }
-                            keyExtractor={(item, index)=>item.key = index}
+                            keyExtractor={(item, index) => item.key = index.toString()}
                             onEndReachedThreshold={0.1}
                             onEndReached={this.props.LoreMore}
                             onScrollEndDrag={this.handleEndDrag}

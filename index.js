@@ -24,7 +24,7 @@ import AutoHeightImage from './components/three/react-native-auto-height-image/i
 import AboutCommon from './components/three/react-native-parallax-scroll-view/AboutCommon';// 拉伸图片
 import StarRating from './components/three/react-native-start-rating/star-rating';//评分星星
 import Toast from './components/three/react-native-easy-toast/index';//Toast
-
+import {CachedImage} from "./components/three/react-native-img-cache/build/index";
 
 
 import BaseNavigationBar from './components/widget/BaseNavigationBar';//定时器
@@ -49,6 +49,7 @@ import AddCutCoutView from './components/widget/AddCutCoutView';//数字加减
 
 import CommonStyle from './components/style/CommonStyle';
 import Utils from './components/uitls/Utils';
+import QiuNiuUtils from './components/uitls/QiuNiuUtils';
 import DBUtils from './components/uitls/DBUtils';
 import ImageUtils from './components/uitls/ImageUtils';
 
@@ -86,6 +87,7 @@ export {
     ImageTextView,
     CommonStyle,
     Utils,
+    QiuNiuUtils,
     DBUtils,
     height,
     width,
@@ -111,6 +113,7 @@ export {
     // CheckBox,
     AboutCommon,
     Toast,
+    CachedImage,
     // MessageView,
     // playSound,
 }

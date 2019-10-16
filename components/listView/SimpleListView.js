@@ -230,7 +230,7 @@ export default class SimpleListView extends Component {
                                 onRefresh={this.props.Refresh}
                                 title={this.state.refreshingTip}/>
                         }
-                        keyExtractor={(item, index)=>item.key = index}
+                        keyExtractor={(item, index) => item.key = index.toString()}
                         onEndReachedThreshold={0.1}
                         onEndReached={this.props.LoreMore}
                         onScrollEndDrag={this.handleEndDrag}
