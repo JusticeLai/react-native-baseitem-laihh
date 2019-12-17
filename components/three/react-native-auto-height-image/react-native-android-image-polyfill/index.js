@@ -19,7 +19,7 @@ export default class ImagePolyfill extends React.Component {
    * When the component will mount, verify the image on Android.
    * @return {void}
    */
-  componentWillMount() {
+  componentDidMount() {
     if (isAndroid() && this.props.onError && this.props.source && this.props.source.uri) {
       this.verifyImage();
     }

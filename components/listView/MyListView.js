@@ -47,10 +47,6 @@ export default class EasyListView extends Component {
     }
 
 
-    componentWillMount() {
-
-    }
-
     //
 
     _flatList;

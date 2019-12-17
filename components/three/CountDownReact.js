@@ -105,14 +105,12 @@ class CountDown extends Component {
         this.props.onEnd();
       }
     }, 1000);
-  }
-  componentWillMount() {
-    const date = this.getDateData(this.props.date);
-    if (date) {
-      this.setState(date);
+    const date2 = this.getDateData(this.props.date);
+    if (date2) {
+      this.setState({date:date2});
     }
-
   }
+
   componentWillUnmount() {
     this.stop();
   }

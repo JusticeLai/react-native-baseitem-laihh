@@ -14,9 +14,9 @@ import {
     TouchableOpacity,
     View,
     AppState,
-    NetInfo,
 } from 'react-native';
 
+import NetInfo from "@react-native-community/netinfo";
 /**
  * The status of countdown view.
  * None：default

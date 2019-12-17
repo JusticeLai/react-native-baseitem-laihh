@@ -87,7 +87,7 @@ export default class ImageTextView extends Component {
                 <View style={{
                     position: 'absolute',
                     right: 0,
-                    top: 4,
+                    top: 0,
                     width: 20,
                     height: 20,
                     justifyContent: 'center',

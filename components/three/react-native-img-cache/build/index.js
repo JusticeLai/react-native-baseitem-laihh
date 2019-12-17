@@ -150,7 +150,7 @@ export class BaseCachedImage extends Component {
         }
         return source;
     }
-    componentWillMount() {
+    componentDidMount() {
         const { mutable } = this.props;
         const source = this.checkSource(this.props.source);
         this.setState({ path: undefined });

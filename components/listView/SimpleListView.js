@@ -103,10 +103,12 @@ export default class SimpleListView extends Component {
                 }
                 // console.warn('有数据');
             } else {
+
                 this.setState({
                     isHideListView: 'RefreshEmpty',
                     refreshing: false,
                 })
+
                 // console.warn('没数据');
             }
 
@@ -117,6 +119,7 @@ export default class SimpleListView extends Component {
             })
             // console.warn('刷新异常');
         }else if (isReFresh == 'RefreshEmpty') {
+
             this.setState({
                 isHideListView: 'RefreshEmpty',
                 refreshing: false,
@@ -385,6 +388,7 @@ export default class SimpleListView extends Component {
         if (page == 0) {
             this.setState({page: '1', top: ''});
         }
+        this.props.handleEndDrag ? this.props.handleEndDrag(event, _scrollView) :()=>{}
         console.log(page);
         console.log(height);
     }

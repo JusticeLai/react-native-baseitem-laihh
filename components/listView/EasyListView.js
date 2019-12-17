@@ -47,9 +47,6 @@ export default class EasyListView extends Component {
     }
 
 
-    componentWillMount() {
-
-    }
 
     //
 
