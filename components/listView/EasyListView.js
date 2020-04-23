@@ -63,8 +63,8 @@ export default class EasyListView extends Component {
                     {this.props.isHideListView == false ?
                         <SwipeListView
                             enableEmptySections={true}
-                            dataSource={this.props.dataSource}
-                            renderRow={this.props.renderRow}
+                            data={this.props.dataSource}
+                            renderItem={this.props.renderRow}
                             refreshControl={
                                 <RefreshControl
                                     refreshing={this.props.isHideListView}

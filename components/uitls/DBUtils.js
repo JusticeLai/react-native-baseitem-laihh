@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import {
-    AsyncStorage,
-} from 'react-native';
 
+import  AsyncStorage from '@react-native-community/async-storage';
 
 let instance = null;
 

@@ -4,8 +4,11 @@ var createReactClass = require('create-react-class');
 var Canvas = require('./Canvas.js');
 var qr = require('./qr.js/index.js');
 var {
-    View,WebView
+    View
 } = require('react-native');
+
+
+import { WebView } from 'react-native-webview';
 
 
 function renderCanvas(canvas) {

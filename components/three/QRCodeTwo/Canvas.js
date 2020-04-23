@@ -4,9 +4,10 @@ var createReactClass = require('create-react-class');
 
 var {
     View,
-    WebView,
     Platform
 } = require('react-native');
+
+import { WebView } from 'react-native-webview';
 
 var Canvas = createReactClass({
     propTypes: {

@@ -36,8 +36,8 @@ export default class CodePushAlertView extends Component {
 
     isHaveCodePushUpdate() {
         // this.showAlert()
-
-        this.get('http://devgomanage.g2l-service.com/getVersions?osType=0', response=> {
+        this.get('https://devstoreapi.g2l-service.com/getVersions?osType=0', response=> {
+            // this.get('http://devgomanage.g2l-service.com/getVersions?osType=0', response=> {
             if (response.status == 0) {
                 // console.warn(response.data.title)
                 if (response.data.title == '上线') {
@@ -80,7 +80,8 @@ export default class CodePushAlertView extends Component {
         CodePush.checkForUpdate()
             .then((update) => {
                 if (!update) {
-                    console.warn('热更新已是最新新版了!')
+                    console.log('热更新已是最新新版了!')
+                    // console.warn('热更新已是最新新版了!')
                     // this.Toast('app是最新版了');
                 } else {
                     console.warn('有热更新!')

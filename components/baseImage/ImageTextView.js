@@ -63,7 +63,7 @@ export default class ImageTextView extends Component {
                 width: width + 30,
                 zIndex: zIndex,
             }}>
-                <Image style={{width: width - 10, height: height - 10, margin: 5, borderRadius: borderRadius}}
+                <Image  resizeMode={'contain'} style={{width: width - 10, height: height - 10, marginBottom: 5, borderRadius: borderRadius}}
                        source={image}/>
                 <Text style={{height: textHeight, color: color, fontSize: fontSize}}>{text}</Text>
 
@@ -79,23 +79,23 @@ export default class ImageTextView extends Component {
             )
         } else {
             let countX = count;
-            if (count >= 99) {
-                countX = '99+';
+            if (count >= 9) {
+                countX = '9+';
             }
 
             return (
                 <View style={{
                     position: 'absolute',
-                    right: 0,
-                    top: 0,
-                    width: 20,
-                    height: 20,
+                    right: 10,
+                    top: -4,
+                    width: 18,
+                    height: 18,
                     justifyContent: 'center',
                     alignItems: 'center',
-                    backgroundColor: 'red',
+                    backgroundColor: 'rgba(255, 67, 125, 1)',
                     borderRadius: 10
                 }}>
-                    <Text style={{color: 'white', fontSize: 10}}>{countX}</Text>
+                    <Text style={{color: 'white', fontSize: 10,paddingLeft:2}}>{countX}</Text>
                 </View>
             )
         }

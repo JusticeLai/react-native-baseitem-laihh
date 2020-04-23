@@ -57,13 +57,14 @@ export default class BaseNavigationBar extends Component {
             </View>
         )
     }
-
+    // barStyle="light-content"/
+    // backgroundColor={backgroundColor}
 
     renderContainView(type, backgroundColor, titleColor, titleFontSize, onLeftPress,onRightPress, SearchImage,ErrorImage, onChangeText,placeholder,editable) {
         if (type == '') {
             return (
                 <View style={{flex: 1}}>
-                    <StatusBar   backgroundColor={backgroundColor} barStyle="light-content"/>
+                    <StatusBar  />
                     <View style={{
                         flexDirection: 'row',
                         height: 43+5,
@@ -96,7 +97,7 @@ export default class BaseNavigationBar extends Component {
 
             return (
                 <View style={{flex: 1}}>
-                    <StatusBar backgroundColor={backgroundColor} barStyle="light-content"/>
+                    <StatusBar  />
                     <View style={{
                         flexDirection: 'row',
                         height: 43+5,
@@ -245,7 +246,7 @@ export default class BaseNavigationBar extends Component {
                             {
                                 item.title ?
                                     <Text style={{
-                                        color: 'white',
+                                        color: 'black',
                                         marginRight: 12,
                                         fontSize: item.fontSize ? item.fontSize : 14
                                     }}>{item.title}</Text>
