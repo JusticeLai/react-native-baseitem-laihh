@@ -39,7 +39,7 @@
     "prettier": "^1.10.2",
     "react": "^16.8.4",
     "react-native": "0.58.6",
-    "standard-version": "^4.0.0"
+    "standard-version": "^8.0.1"
   },
   "gtScaffoldVersion": "0.1.0",
   "homepage": "https://github.com/vivaxy/react-native-auto-height-image#readme",
